@@ -55,17 +55,27 @@ section > h1 {
 .projects_container {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -19px;
+    margin-left: -19px;
 }
 
-.projects_card_container {
+.projects_container > div {
     flex-basis: 30%;
     flex-grow: 0;
     flex-shrink: 0;
 
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-left: 19px;
+    margin-right: 19px;
+    /* margin-bottom: 110px; */
+}
+
+.projects_card_container {
+    /* flex-basis: 30%;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    margin-left: 19px;
+    margin-right: 19px; */
     margin-bottom: 110px;
 
     background-color: transparent;
@@ -75,14 +85,15 @@ section > h1 {
 }
 
 .projects_card_subContainer {
-    position: relative;
+    /* position: relative; */
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     height: 100%;
 }
 
-.projects_card_container:hover .projects_card_subContainer {
+.projects_card_container:hover 
+.projects_card_subContainer {
     transform: rotateY(180deg);
 }
 
@@ -97,15 +108,7 @@ section > h1 {
     -webkit-backface-visibility: hidden;
 }
 
-.projects_card_subContainer > div:nth-of-type(2) {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-}
-
-.projects_container > div > div:nth-of-type(2) {
+.projects_card_container > div:nth-of-type(2) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,11 +117,55 @@ section > h1 {
     height: 70px;
 }
 
-.projects_container > div > div:nth-of-type(2) p {
+.projects_card_container > div:nth-of-type(2) > p {
     margin: 0;
     font-size: 20px;
 }
 
+.projects_card_verse {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+
+    height: 100%;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.projects_card_verse > div {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.projects_card_verse > div > div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 4em;
+}
+
+.projects_card_verse > div > p {
+    width: 40%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    top: 60%;
+    left: 30%;
+}
+
+.projects_card_verse > div > div:nth-of-type(2) {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    align-items: center;
+}
+
+.projects_card_verse > div > div:nth-of-type(2) > i {
+    cursor: pointer;
+}
 
 .about_container {
     display: flex;
@@ -144,24 +191,78 @@ section > h1 {
 }
 
 .about_container > div:nth-of-type(2) > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-basis: 25%;
     flex-shrink: 0;
     flex-grow: 1;
+
     max-width: 32.5%;
     height: 50px;
     border: 1px solid #eee;
+    font-size: 2em;
+    color: #e6e6e6;
 }
 
 .about_container > div:nth-of-type(2) > div:first-of-type {
     flex-basis: 100%;
     flex-shrink: 0;
     flex-grow: 0;
+
     max-width: 99%;
     height: 30px;
     text-align: center;
-    padding-top: 2%;
+    padding-top: 3px;
+    font-size: 20px;
 }
 
-.about_container > div:nth-of-type(2) > div p {
-    text-align: center;
+
+/* ** SLIDER ** */
+
+.projects_slider_container {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(63, 61, 61, 0.774);
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+}
+
+.slider_body {
+    width: 70%;
+    height: 80%;
+    margin-left: 15%;
+    margin-top: 5%;
+    background-color: #fff;
+
+    position: relative;
+    /* pointer-events: none; */
+}
+
+.modal_closed {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal_open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.slider_body > p {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 50px;
+    color: #000;
+    cursor: pointer;
+    margin: 0;
 }
