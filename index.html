@@ -45,7 +45,7 @@
                                     <p></p>
                                     <div>
                                         <i 
-                                            onclick="openSlider(1)" 
+                                            onclick="toggleSlider(1)" 
                                             class="fas fa-eye" 
                                             style="color: #019AFF;">
                                         </i>
@@ -61,11 +61,41 @@
                         </div>
                     </div>
                     <div 
-                        class="projects_slider_container modal_closed" 
-                        id="products_slider-1"
+                        class="projects_modal_container modal_open" 
+                        id="products_modal-1"
                     >
-                        <div class="slider_body">
-                            <p onclick="openSlider(1)">X</p>
+                        <div class="modal_body">
+                            <div class="slider_container">
+                                <div>
+                                    <img src="./img/Site-1/Slider/img-1.png" />
+                                </div>
+                                <div>
+                                    <img src="./img/Site-1/Slider/img-2.png" />
+                                    <img src="./img/Site-1/Slider/img-3.png" />
+                                    <img src="./img/Site-1/Slider/img-4.png" />
+                                    <img src="./img/Site-1/Slider/img-5.png" />
+                                </div>
+                            </div>
+                            <div class="links_container">
+                                <div>
+                                    <h1>Tecnologias utilizadas</h1>
+                                    <div>
+                                        <i class="fab fa-js" style="color: #F7E018;"></i>
+                                        <i class="fab fa-html5" style="color: #EF652A;"></i>
+                                        <i class="fab fa-css3-alt" style="color: #33A8DA;"></i>
+                                        <i class="fab fa-bootstrap" style="color: #814DCE;"></i>  
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1>Links</h1>
+                                    <div>
+                                        <a href="#"><i class="fas fa-link" style="color: #F98B00;"></i>
+                                        </a>
+                                        <a href="#"><i class="fab fa-github" style="color: #000;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p onclick="toggleSlider(1)">X</p>
                         </div>
                     </div>
                 </div>

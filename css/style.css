@@ -5,7 +5,7 @@
 body {
     margin: 0;
     background-color: #272727;
-    color: #fff;
+    /* color: #fff; */
     font-family: 'Nunito';
 }
 
@@ -17,6 +17,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: #fff;
 }
 
 nav > h1 {
@@ -50,6 +51,7 @@ section {
 
 section > h1 {
     font-size: 3rem;
+    color: #fff;
 }
 
 .projects_container {
@@ -70,12 +72,7 @@ section > h1 {
 }
 
 .projects_card_container {
-    /* flex-basis: 30%;
-    flex-grow: 0;
-    flex-shrink: 0;
-
-    margin-left: 19px;
-    margin-right: 19px; */
+    color: #fff;
     margin-bottom: 110px;
 
     background-color: transparent;
@@ -220,7 +217,7 @@ section > h1 {
 
 /* ** SLIDER ** */
 
-.projects_slider_container {
+.projects_modal_container {
     height: 100vh;
     width: 100%;
     background-color: rgba(63, 61, 61, 0.774);
@@ -236,11 +233,13 @@ section > h1 {
     -o-transition: all 0.6s ease;
 }
 
-.slider_body {
+.modal_body {
+    display: flex;
+    justify-content: space-between;
     width: 70%;
-    height: 80%;
+    height: 90%;
     margin-left: 15%;
-    margin-top: 5%;
+    margin-top: 3%;
     background-color: #fff;
 
     position: relative;
@@ -257,7 +256,49 @@ section > h1 {
     opacity: 1;
 }
 
-.slider_body > p {
+.slider_container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 40px;
+    padding-top: 40px;
+    width: 50%;
+}
+
+.slider_container > div:nth-of-type(2) {
+    width: 30%;
+    margin-left: 20px;
+}
+
+.slider_container img {
+    max-width: 100%;
+}
+
+.links_container {
+    width: 30%;
+    padding-right: 80px;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+.links_container > div > div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.links_container h1 {
+    text-align: center;
+}
+
+.links_container i {
+    font-size: 5em;
+}
+
+.links_container > div > div:first-of-type i {
+    flex-basis: 25%;
+}
+
+.modal_body > p {
     position: absolute;
     right: 20px;
     top: 20px;
