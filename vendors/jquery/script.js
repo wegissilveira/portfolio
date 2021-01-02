@@ -86,18 +86,21 @@ $(function(){
             main_img_div_El.appendTo(slider_container_El)
 
             const main_img_El = $('<img>')
-            main_img_El.attr('src', value.imgs[0] )
+            main_img_El.attr('src', value.imgs[0])
+            main_img_El.attr('id', `main_img-${index}`)
             main_img_El.appendTo(main_img_div_El)
 
-            const slider_imgs_div_El = $('<div></div>')
-            slider_imgs_div_El.appendTo(slider_container_El)
+            const slider_thumbs_div_El = $('<div></div>')
+            slider_thumbs_div_El.addClass('slider_thumbs_container')
+            slider_thumbs_div_El.appendTo(slider_container_El)
             
             $.each(value.imgs, (idx, val) => {
-                if (idx !== 0) {
-                    const slider_img_El = $('<img>')
-                    slider_img_El.attr('src', val)
-                    slider_img_El.appendTo(slider_imgs_div_El)
-                }
+                const slider_thumb_El = $('<img>')
+                slider_thumb_El.addClass(idx === 0 ? 'active_thumb' : null)
+                slider_thumb_El.attr('src', val)
+                slider_thumb_El.on('mouseover', () => changeMainImage(val, index, slider_thumb_El))
+                slider_thumb_El.appendTo(slider_thumbs_div_El)
+                
             })
 
             const modal_info_container_El = $('<div></div>')

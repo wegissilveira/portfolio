@@ -155,7 +155,8 @@ section > h1 {
 }
 
 .jquery_black {
-    background-image: url('../vendors/icons/jquery/jquery_black.png');
+    /* background-image: url('../vendors/icons/jquery/jquery_black.png'); */
+    background-image: url('../vendors/icons/jquery/jquery-big.png');
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
@@ -294,13 +295,19 @@ section > h1 {
     width: 50%;
 }
 
-.slider_container > div:nth-of-type(2) {
+.slider_thumbs_container {
     width: 30%;
     margin-left: 20px;
 }
 
+.active_thumb {
+    border: 2px solid rgb(102, 102, 102);
+    width: calc(100% - 4px);
+}
+
 .slider_container img {
     max-width: 100%;
+    cursor: pointer;
 }
 
 .links_container {
