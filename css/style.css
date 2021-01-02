@@ -328,6 +328,11 @@ section > h1 {
 .links_container > div > div:first-of-type img {
     flex-basis: 25%;
     max-width: 25%;
+    margin-bottom: 20px;
+}
+
+.links_container > div > div:first-of-type .jquery_black {
+    height: 83px;
 }
 
 .modal_body > p {

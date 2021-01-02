@@ -6,10 +6,10 @@ function returnData() {
             nome: 'Site 1',
             tecnologias: [
                 ['js', 'fab fa-js', '#F7E018'], 
-                ['html', 'fab fa-html5', '#EF652A'], 
                 ['css', 'fab fa-css3-alt', '#33A8DA'], 
-                ['bootstrap', 'fab fa-bootstrap', '#814DCE'],
+                ['html', 'fab fa-html5', '#EF652A'], 
                 ['jquery', 'jquery_black', ''],
+                ['bootstrap', 'fab fa-bootstrap', '#814DCE'],
             ],
             links: [
                 ['site', '#', 'fas fa-link', '#F98B00'],
@@ -29,8 +29,8 @@ function returnData() {
             tecnologias: [
                 ['js', 'fab fa-js', '#F7E018'], 
                 ['html', 'fab fa-html5', '#EF652A'], 
+                ['bootstrap', 'fab fa-bootstrap', '#814DCE'],
                 ['css', 'fab fa-css3-alt', '#33A8DA'], 
-                ['bootstrap', 'fab fa-bootstrap', '#814DCE']
             ],
             links: [
                 ['site', '#', 'fas fa-link', '#F98B00'],

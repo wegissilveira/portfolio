@@ -70,13 +70,79 @@ $(function(){
 
             /* MODAL */
             const modal_container_El = $('<div></div>')
-            modal_container_El.addClass('projects_modal_container modal_open')
+            modal_container_El.addClass('projects_modal_container modal_closed')
             modal_container_El.attr('id', `products_modal-${index+1}`)
             modal_container_El.appendTo(card_block_El)
 
             const modal_body_El = $('<div></div>')
             modal_body_El.addClass('modal_body')
             modal_body_El.appendTo(modal_container_El)
+
+            const slider_container_El = $('<div></div>')
+            slider_container_El.addClass('slider_container')
+            slider_container_El.appendTo(modal_body_El)
+
+            const main_img_div_El = $('<div></div>')
+            main_img_div_El.appendTo(slider_container_El)
+
+            const main_img_El = $('<img>')
+            main_img_El.attr('src', value.imgs[0] )
+            main_img_El.appendTo(main_img_div_El)
+
+            const slider_imgs_div_El = $('<div></div>')
+            slider_imgs_div_El.appendTo(slider_container_El)
+            
+            $.each(value.imgs, (idx, val) => {
+                if (idx !== 0) {
+                    const slider_img_El = $('<img>')
+                    slider_img_El.attr('src', val)
+                    slider_img_El.appendTo(slider_imgs_div_El)
+                }
+            })
+
+            const modal_info_container_El = $('<div></div>')
+            modal_info_container_El.addClass('links_container')
+            modal_info_container_El.appendTo(modal_body_El)
+
+            const modal_technologies_container_El = $('<div></div>')
+            modal_technologies_container_El.appendTo(modal_info_container_El)
+
+            modal_technologies_title_El = $('<h1>Tecnologias utilizadas</h1>')
+            modal_technologies_title_El.appendTo(modal_technologies_container_El)
+
+            technologies_icons_container_El = $('<div></div>')
+            technologies_icons_container_El.appendTo(modal_technologies_container_El)
+
+            $.each(value.tecnologias, (idx, val) => {
+                const technology_icon_El = $('<i></i>')
+                technology_icon_El.addClass(val[1])
+                technology_icon_El.css('color', val[2])
+                technology_icon_El.appendTo(technologies_icons_container_El)
+            })
+
+            const modal_links_container_El = $('<div></div>')
+            modal_links_container_El.appendTo(modal_info_container_El)
+
+            modal_links_title_El = $('<h1>Links</h1>')
+            modal_links_title_El.appendTo(modal_links_container_El)
+
+            links_icons_container_El = $('<div></div>')
+            links_icons_container_El.appendTo(modal_links_container_El)
+
+            $.each(value.links, (idx, val) => {
+                const project_link_El = $('<a></a>')
+                project_link_El.attr('href', val[1])
+                project_link_El.appendTo(links_icons_container_El)
+
+                const link_icon_El = $('<i></i>')
+                link_icon_El.addClass(val[2])
+                link_icon_El.css('color', val[3])
+                link_icon_El.appendTo(project_link_El)
+            })
+
+            const toggle_slider_icon_El = $('<p>X</p>')
+            toggle_slider_icon_El.on('click', () => toggleSlider(index+1))
+            toggle_slider_icon_El.appendTo(modal_body_El)
 
         })
 
