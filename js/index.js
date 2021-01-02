@@ -1,4 +1,5 @@
 const toggleSlider = id => {
+    console.log(id)
     const modal = document.getElementById('products_modal-'+id)
 
     modal.classList.contains('modal_closed') ? 

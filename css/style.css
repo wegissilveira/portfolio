@@ -144,6 +144,23 @@ section > h1 {
     font-size: 4em;
 }
 
+.projects_card_verse > div > div > i {
+    flex-basis: 25%;
+    margin-bottom: 20px;
+    height: 64px;
+}
+
+.fa-eye {
+    margin: 0;
+}
+
+.jquery_black {
+    background-image: url('../vendors/icons/jquery/jquery_black.png');
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .projects_card_verse > div > p {
     width: 40%;
     height: 1px;
@@ -185,6 +202,15 @@ section > h1 {
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
+}
+
+.jquery_grey {
+    background-image: url('../vendors/icons/jquery/jquery_grey.png');
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80%;
+    width: 40px;
 }
 
 .about_container > div:nth-of-type(2) img  {
