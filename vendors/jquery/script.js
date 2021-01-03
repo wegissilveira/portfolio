@@ -1,8 +1,6 @@
 $(function(){
     $.getScript('../../data/projetosData.js', function() {
 
-        console.log(returnData())
-
         $.each(returnData(), (index, value) => {
             
             const card_block_El = $('<div></div>')

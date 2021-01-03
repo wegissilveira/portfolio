@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth
+}
+
 * {
     font-family: 'Nunito';
 }
@@ -7,6 +11,9 @@ body {
     background-color: #272727;
     /* color: #fff; */
     font-family: 'Nunito';
+
+    /* scroll-behavior: smooth;
+    overflow-y: scroll; */
 }
 
 nav {
@@ -33,7 +40,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #fff;
 }
 
 .nav_container > h1 {
@@ -47,7 +53,10 @@ nav {
     font-weight: bold;
 }
 
-.nav_container > div > p {
+.nav_container > div > a {
+    color: #fff;
+    text-decoration: none;
+
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -55,18 +64,23 @@ nav {
     -o-transition: 0.5s;
 }
 
-.nav_container > div > p:hover {
+.nav_container > div > a:hover {
     color: #ff9fe5;
     cursor: pointer;
+}
+
+.nav_container .active {
+    color: #d35058;
 }
 
 section {
     width: 74%;
     margin-left: 13%;
+    
 }
 
 section:first-of-type {
-    margin-top: 80px;
+    margin-top: 120px;
 }
 
 section > h1 {
@@ -427,7 +441,7 @@ section > h1 {
     background-color: #e6e6e6;
     flex-basis: 25%;
     height: fit-content;
-    
+
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
