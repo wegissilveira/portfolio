@@ -143,10 +143,10 @@ $(function(){
                 link_icon_El.appendTo(project_link_El)
             })
 
-            const toggle_slider_icon_El = $('<p>X</p>')
-            toggle_slider_icon_El.on('click', () => toggleSlider(index+1))
-            toggle_slider_icon_El.appendTo(modal_body_El)
-
+            const toggle_out_slider_icon_El = $('<i></i>')
+            toggle_out_slider_icon_El.addClass('fas fa-sign-out-alt')
+            toggle_out_slider_icon_El.on('click', () => toggleSlider(index+1))
+            toggle_out_slider_icon_El.appendTo(modal_body_El)
         })
 
 

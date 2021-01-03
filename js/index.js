@@ -1,9 +1,14 @@
 const toggleSlider = id => {
     const modal_El = document.getElementById('products_modal-'+id)
+    const body = document.getElementsByTagName('BODY')[0]
 
-    modal_El.classList.contains('modal_closed') ? 
-        modal_El.className = 'projects_modal_container modal_open' :
+    if (modal_El.classList.contains('modal_closed')) {
+        modal_El.className = 'projects_modal_container modal_open'
+        body.style.overflow = 'hidden'
+    } else {
         modal_El.className = 'projects_modal_container modal_closed'
+        body.style.overflow = 'visible'
+    }
 }
 
 const changeMainImage = (imgSource, index, el) => {
@@ -14,14 +19,9 @@ const changeMainImage = (imgSource, index, el) => {
     const thumbs_arr = Array.from(el[0].parentNode.children)
     thumbs_arr.forEach(item => {
         if (item.className === 'active_thumb') {
-            // item.style.border = ''
-            // console.log(item)
             item.classList.remove('active_thumb')
         }
     })
 
-    // el[0].style.border = '2px #ccc solid'
     el[0].classList.add('active_thumb')
-
-    // console.log(thumbs_arr)
 }
