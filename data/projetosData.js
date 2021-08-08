@@ -85,7 +85,33 @@ function returnData() {
             nome: 'Site 5',
             tecnologias: [js, html, bootstrap, css],
             links: [webpage, github],
-            cover: '../img/Site-1/Frente.png',
+            cover: '../img/Site-2/Frente.png',
+            imgs: [
+                '../img/Site-1/Slider/img-1.png',
+                '../img/Site-1/Slider/img-2.png',
+                '../img/Site-1/Slider/img-3.png',
+                '../img/Site-1/Slider/img-4.png',
+                '../img/Site-1/Slider/img-5.png'
+            ]
+        },
+        {  
+            nome: 'Site 5',
+            tecnologias: [js, html, bootstrap, css],
+            links: [webpage, github],
+            cover: '../img/Site-2/Frente.png',
+            imgs: [
+                '../img/Site-1/Slider/img-1.png',
+                '../img/Site-1/Slider/img-2.png',
+                '../img/Site-1/Slider/img-3.png',
+                '../img/Site-1/Slider/img-4.png',
+                '../img/Site-1/Slider/img-5.png'
+            ]
+        },
+        {  
+            nome: 'Site 5',
+            tecnologias: [js, html, bootstrap, css],
+            links: [webpage, github],
+            cover: '../img/Site-2/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
                 '../img/Site-1/Slider/img-2.png',
