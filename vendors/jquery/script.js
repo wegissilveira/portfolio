@@ -24,15 +24,17 @@ $(function(){
             card_img_El.appendTo(card_img_div_El)
             card_img_div_El.appendTo(card_subContainer_El)
 
-            const card_verse_container_El = $('<div></div>')
-            card_verse_container_El.addClass('projects_card_verse')
-            card_verse_container_El.appendTo(card_subContainer_El)
+            const card_back_container_El = $('<div></div>')
+            card_back_container_El.addClass('projects_cardBack_container')
+            card_back_container_El.appendTo(card_subContainer_El)
 
-            const card_verse_subContainer_El = $('<div></div>')
-            card_verse_subContainer_El.appendTo(card_verse_container_El)
+            const card_back_subContainer_El = $('<div></div>')
+            card_back_subContainer_El.addClass('projects_cardBack_subContainer')
+            card_back_subContainer_El.appendTo(card_back_container_El)
 
             const project_technologies_El = $('<div></div>')
-            project_technologies_El.appendTo(card_verse_subContainer_El)
+            project_technologies_El.addClass('projects_technologies')
+            project_technologies_El.appendTo(card_back_subContainer_El)
 
             $.each(value.tecnologias, (idx, val) => {
                 const technology_icon_El = $('<i></i>')
@@ -41,11 +43,12 @@ $(function(){
                 technology_icon_El.appendTo(project_technologies_El)
             })
 
-            const verse_separator_El = $('<p></p>')
-            verse_separator_El.appendTo(card_verse_subContainer_El)
+            const back_separator_El = $('<p></p>')
+            back_separator_El.appendTo(card_back_subContainer_El)
 
             const project_links_container_El = $('<div></div>')
-            project_links_container_El.appendTo(card_verse_subContainer_El)
+            project_links_container_El.addClass('projects_links')
+            project_links_container_El.appendTo(card_back_subContainer_El)
 
             const open_modal_icon_El = $('<i></i>')
             open_modal_icon_El.addClass('fas fa-eye')
