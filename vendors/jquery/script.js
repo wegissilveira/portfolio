@@ -79,9 +79,17 @@ $(function(){
             modal_body_El.addClass('modal_body')
             modal_body_El.appendTo(modal_container_El)
 
+            const toggle_out_slider_icon_El = $('<i></i>')
+            toggle_out_slider_icon_El.addClass('fas fa-sign-out-alt modal_exit')
+            toggle_out_slider_icon_El.on('click', () => toggleSlider(index+1))
+            toggle_out_slider_icon_El.appendTo(modal_body_El)
+
             const slider_container_El = $('<div></div>')
             slider_container_El.addClass('slider_container')
             slider_container_El.appendTo(modal_body_El)
+
+            const slider_title_El = $(`<h1>${value.nome}</h1>`)
+            slider_title_El.appendTo(slider_container_El)
 
             const main_img_div_El = $('<div></div>')
             main_img_div_El.appendTo(slider_container_El)
@@ -105,10 +113,11 @@ $(function(){
             })
 
             const modal_info_container_El = $('<div></div>')
-            modal_info_container_El.addClass('links_container')
+            modal_info_container_El.addClass('modal_info_container')
             modal_info_container_El.appendTo(modal_body_El)
 
             const modal_technologies_container_El = $('<div></div>')
+            modal_technologies_container_El.addClass('modal_technologies')
             modal_technologies_container_El.appendTo(modal_info_container_El)
 
             modal_technologies_title_El = $('<h1>Tecnologias utilizadas</h1>')
@@ -125,6 +134,7 @@ $(function(){
             })
 
             const modal_links_container_El = $('<div></div>')
+            modal_links_container_El.addClass('modal_links')
             modal_links_container_El.appendTo(modal_info_container_El)
 
             modal_links_title_El = $('<h1>Links</h1>')
@@ -144,10 +154,10 @@ $(function(){
                 link_icon_El.appendTo(project_link_El)
             })
 
-            const toggle_out_slider_icon_El = $('<i></i>')
-            toggle_out_slider_icon_El.addClass('fas fa-sign-out-alt')
-            toggle_out_slider_icon_El.on('click', () => toggleSlider(index+1))
-            toggle_out_slider_icon_El.appendTo(modal_body_El)
+            const modal_info_description_El = $(`<p>${value.description}</p>`)
+            modal_info_description_El.addClass('modal_description')
+            modal_info_description_El.appendTo(modal_info_container_El) 
+            
         })
 
 

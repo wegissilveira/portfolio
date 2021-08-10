@@ -1,48 +1,52 @@
-const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : 'nav_mobile').children
-const nav_links_arr = Array.from(nav_links_El)
+const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : 'nav_mobile')
+const nav_links_arr = Array.from(nav_links_El.children)
+
+const projetosEl = document.getElementById('projetos')
+const aboutEl = document.getElementById('about')
+const contatoEl = document.getElementById('contato')
+let scrollExecuted = [0,0,0]
 
 window.addEventListener('load', () => {
-    let anchor_ref = 0 
-    nav_links_arr.forEach(link => {
-        const slide_index = link.href.indexOf('#')
-        const anchor = link.href.slice(slide_index)
+    highlight_navigation()
+})
 
-        if (window.location.href.match(anchor) !== null) {
-            link.classList.add('active')
-            anchor_ref--
-        }
+const sections = document.querySelectorAll('section')
 
-        anchor_ref++
-    })
-
-    if (anchor_ref === 3) {
-        nav_links_arr[0].classList.add('active')
-    }
+window.addEventListener('scroll', () => {
+    highlight_navigation()
 })
 
 const highlight_navigation = () => {
-    const current_link_El = event.target
+    let current = ''
 
-    nav_links_arr.forEach(link => {
-        if (link.classList.contains('active')) {
-            link.classList.remove('active')
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop
+        const sectionHeight = section.clientHeight
+
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute('id')
         }
     })
-    
-    current_link_El.classList.add('active')
 
-    if (current_link_El.parentNode.id === 'nav_mobile') {
-        setTimeout(() => {
-            toggleMobileNavigation()
-        }, 700)
-    }
+    nav_links_arr.forEach(item => {
+        item.classList.remove('active')
+        if (item.hash.match(current)) {
+            item.classList.add('active')
+        }
+    })    
 }
+
+window.addEventListener('hashchange', () => {
+    setTimeout(() => {
+        toggleMobileNavigation()
+    }, 700)
+})
 
 const toggleMobileNavigation = () => {
     const mobileNavigation = document.getElementsByClassName('navigation_mobile')[0]
     const navStyle = getComputedStyle(mobileNavigation).transform
     const navTranslateValue = new WebKitCSSMatrix(navStyle).m42
-
+    
     if (navTranslateValue < 0) {
         mobileNavigation.style.transform = 'translateY(0)'
     } else {

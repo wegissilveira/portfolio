@@ -83,7 +83,7 @@ function returnData() {
         },
         {  
             nome: 'Site 5',
-            tecnologias: [js, html, bootstrap, css],
+            tecnologias: [js, html, bootstrap, css, php],
             links: [webpage, github],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -109,7 +109,7 @@ function returnData() {
         },
         {  
             nome: 'Site 5',
-            tecnologias: [js, html, bootstrap, css],
+            tecnologias: [js, html, bootstrap, css, php],
             links: [webpage, github],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -118,7 +118,8 @@ function returnData() {
                 '../img/Site-1/Slider/img-3.png',
                 '../img/Site-1/Slider/img-4.png',
                 '../img/Site-1/Slider/img-5.png'
-            ]
+            ],
+            description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.'
         },
     ]
 
