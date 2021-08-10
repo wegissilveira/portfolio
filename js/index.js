@@ -1,8 +1,7 @@
-const nav_links_El = document.getElementById('nav').children
+const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : 'nav_mobile').children
 const nav_links_arr = Array.from(nav_links_El)
 
 window.addEventListener('load', () => {
-
     let anchor_ref = 0 
     nav_links_arr.forEach(link => {
         const slide_index = link.href.indexOf('#')
@@ -31,6 +30,24 @@ const highlight_navigation = () => {
     })
     
     current_link_El.classList.add('active')
+
+    if (current_link_El.parentNode.id === 'nav_mobile') {
+        setTimeout(() => {
+            toggleMobileNavigation()
+        }, 700)
+    }
+}
+
+const toggleMobileNavigation = () => {
+    const mobileNavigation = document.getElementsByClassName('navigation_mobile')[0]
+    const navStyle = getComputedStyle(mobileNavigation).transform
+    const navTranslateValue = new WebKitCSSMatrix(navStyle).m42
+
+    if (navTranslateValue < 0) {
+        mobileNavigation.style.transform = 'translateY(0)'
+    } else {
+        mobileNavigation.style.transform = 'translateY(-100%)'
+    }
 }
 
 const toggleSlider = id => {
