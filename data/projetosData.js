@@ -1,38 +1,17 @@
-/* 
-    *LISTA DE ÍCONES DAS TECNOLOGIAS:
-        -Javascript: fab fa-js
-        -CSS: fab fa-css3-alt
-        -HTML: fab fa-html5
-        -JQuery: jquery_black
-        -Bootstrap: fab fa-bootstrap
-        -ReactJs: fab fa-react
-        -Angular: fab fa-angular
-        -NodeJs: fab fa-node
-        -PHP: fab fa-php
-*/
-
-const js = ['js', 'fab fa-js', '#F7E018']
-const css = ['css', 'fab fa-css3-alt', '#33A8DA']
-const html = ['html', 'fab fa-html5', '#EF652A']
-const jQuery = ['jquery', 'jquery_black', '']
-const bootstrap = ['bootstrap', 'fab fa-bootstrap', '#814DCE']
-const reactJs = ['react', 'fab fa-react', '#61DAFB']
-const angular = ['angular', 'fab fa-angular', '#C4002E']
-const node = ['nodeJs', 'fab fa-node', '#8BBF3D']
-const php = ['php', 'fab fa-php', '#687BAB']
-
-const webpage = ['site', '#', 'fas fa-link', '#F98B00']
-const github =  ['github', '#', 'fab fa-github', '#000']
+import icons from './iconsData.js'
 
 
 let projetosData
 
-function returnData() {
-    projetosData = [
-        {  
+// function returnData() {
+    export default projetosData = [
+        {
             nome: 'Site 1',
-            tecnologias: [js, css, angular, node, php],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.css, icons.angular, icons.node, icons.php],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -42,10 +21,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 2',
-            tecnologias: [js, html, bootstrap, css],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -55,10 +37,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 3',
-            tecnologias: [js, reactJs, css, bootstrap],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.reactJs, icons.css, icons.bootstrap],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -68,10 +53,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 4',
-            tecnologias: [js, html, css, bootstrap],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.html, icons.css, icons.bootstrap],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -81,10 +69,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 5',
-            tecnologias: [js, html, bootstrap, css, php],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -94,10 +85,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 5',
-            tecnologias: [js, html, bootstrap, css],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -107,10 +101,13 @@ function returnData() {
                 '../img/Site-1/Slider/img-5.png'
             ]
         },
-        {  
+        {
             nome: 'Site 5',
-            tecnologias: [js, html, bootstrap, css, php],
-            links: [webpage, github],
+            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
+            links: [
+                ['#', icons.webpage[1], icons.webpage[2]], 
+                ['#', icons.github[1], icons.github[2]]
+            ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
                 '../img/Site-1/Slider/img-1.png',
@@ -123,5 +120,7 @@ function returnData() {
         },
     ]
 
-    return projetosData
-}
+    // return projetosData
+// }
+
+// export default projetosData

@@ -1,7 +1,11 @@
-$(function(){
-    $.getScript('../../data/projetosData.js', function() {
+import projetosData from '../../data/projetosData.js'
+import aboutData from '../../data/aboutData.js'
 
-        $.each(returnData(), (index, value) => {
+// $(function(){
+    // $.getScript('../../data/projetosData.js', function() {
+        
+        $.each(projetosData, (index, value) => {
+        // $.each(projetosData, (index, value) => {
             
             const card_block_El = $('<div></div>')
             card_block_El.appendTo('.projects_container')
@@ -59,12 +63,12 @@ $(function(){
 
             $.each(value.links, (idx, val) => {
                 const project_link_El = $('<a></a>')
-                project_link_El.attr('href', val[1])
+                project_link_El.attr('href', val[0])
                 project_link_El.appendTo(project_links_container_El)
 
                 const link_icon_El = $('<i></i>')
-                link_icon_El.addClass(val[2])
-                link_icon_El.css('color', val[3])
+                link_icon_El.addClass(val[1])
+                link_icon_El.css('color', val[2])
                 link_icon_El.appendTo(project_link_El)
             })
             
@@ -113,7 +117,6 @@ $(function(){
                 slider_thumb_El.attr('src', val)
                 slider_thumb_El.on('mouseover', () => changeMainImage(val, index, slider_thumb_El))
                 slider_thumb_El.appendTo(slider_thumbs_div_El)
-                
             })
 
             const modal_info_container_El = $('<div></div>')
@@ -124,10 +127,10 @@ $(function(){
             modal_technologies_container_El.addClass('modal_technologies')
             modal_technologies_container_El.appendTo(modal_info_container_El)
 
-            modal_technologies_title_El = $('<h1>Tecnologias utilizadas</h1>')
+            const modal_technologies_title_El = $('<h1>Tecnologias utilizadas</h1>')
             modal_technologies_title_El.appendTo(modal_technologies_container_El)
 
-            technologies_icons_container_El = $('<div></div>')
+            const technologies_icons_container_El = $('<div></div>')
             technologies_icons_container_El.appendTo(modal_technologies_container_El)
 
             $.each(value.tecnologias, (idx, val) => {
@@ -141,20 +144,20 @@ $(function(){
             modal_links_container_El.addClass('modal_links')
             modal_links_container_El.appendTo(modal_info_container_El)
 
-            modal_links_title_El = $('<h1>Links</h1>')
+            const modal_links_title_El = $('<h1>Links</h1>')
             modal_links_title_El.appendTo(modal_links_container_El)
 
-            links_icons_container_El = $('<div></div>')
+            const links_icons_container_El = $('<div></div>')
             links_icons_container_El.appendTo(modal_links_container_El)
 
             $.each(value.links, (idx, val) => {
                 const project_link_El = $('<a></a>')
-                project_link_El.attr('href', val[1])
+                project_link_El.attr('href', val[0])
                 project_link_El.appendTo(links_icons_container_El)
 
                 const link_icon_El = $('<i></i>')
-                link_icon_El.addClass(val[2])
-                link_icon_El.css('color', val[3])
+                link_icon_El.addClass(val[1])
+                link_icon_El.css('color', val[2])
                 link_icon_El.appendTo(project_link_El)
             })
 
@@ -164,11 +167,36 @@ $(function(){
             
         })
 
+        
 
+    // }).fail(function(jqxhr, settings, exceptions) {
+    //     console.log('error:')
+    //     console.log(exception)
+    // })
 
+    // $.getScript('../../data/aboutData.js', function() {
+        $.each(aboutData, (index, value) => {
+            if (value.text) {
+                const about_text_El = $(`<p>${value.text}</p>`)
+                about_text_El.appendTo('.about_text')
+            }
 
-    }).fail(function(jqxhr, settings, exceptions) {
-        console.log('error:')
-        console.log(exception)
-    })
-})
+            if (value.skills) {
+                $.each(value.skills, (i, val) => {
+                    const skillContainer_El = $('<div></div>')
+
+                    const skillIcon_El = $('<i></i>')
+                    skillIcon_El.addClass(val[1])
+                    skillIcon_El.appendTo(skillContainer_El)
+
+                    skillContainer_El.appendTo('.about_skills')
+                })
+            }
+            
+        })
+        
+    // }).fail(function(jqxhr, settings, exceptions) {
+    //     console.log('error:')
+    //     console.log(exception)
+    // })
+// })
