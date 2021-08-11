@@ -1,13 +1,10 @@
 const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : 'nav_mobile')
 const nav_links_arr = Array.from(nav_links_El.children)
 
-const projetosEl = document.getElementById('projetos')
-const aboutEl = document.getElementById('about')
-const contatoEl = document.getElementById('contato')
-let scrollExecuted = [0,0,0]
-
 window.addEventListener('load', () => {
-    highlight_navigation()
+    setTimeout(() => {
+        highlight_navigation()
+    }, 500)
 })
 
 const sections = document.querySelectorAll('section')
@@ -18,7 +15,7 @@ window.addEventListener('scroll', () => {
 
 const highlight_navigation = () => {
     let current = ''
-
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop
         const sectionHeight = section.clientHeight
@@ -33,7 +30,7 @@ const highlight_navigation = () => {
         if (item.hash.match(current)) {
             item.classList.add('active')
         }
-    })    
+    })        
 }
 
 window.addEventListener('hashchange', () => {

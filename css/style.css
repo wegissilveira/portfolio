@@ -383,7 +383,7 @@ section > h1 {
     background-color: #fff;
     padding: 15px;
     color: #000;
-    /* width: 70%; */
+    text-align: justify;
     width: var(--sections_children-1);
     margin-bottom: var(--children_1-MB);
 }
@@ -465,8 +465,16 @@ section > h1 {
 @media (max-width:768px) {
     .modal_body {
         width: 90%;
-        height: 70%;
-        margin-top: 15%;
+        height: 72%;
+        margin-top: 14%;
+    }
+}
+
+@media (max-width:768px) {
+    .modal_body {
+        width: 96%;
+        height: 90%;
+        margin-top: 5%;
     }
 }
 
@@ -484,16 +492,29 @@ section > h1 {
 
 @media (max-width:768px) {
     .modal_body_subContainer {
+        padding: 10% 5%;
+        padding-bottom: 5%;
+        gap: 1em 2em;
         grid-template-columns: 60% 35%;
+        grid-template-rows: 40% 30% 30%;
         grid-template-areas: "slider description"
                              "slider description"
                              "info info";
     }
 }
 
+@media (max-width:414px) {
+    .modal_body_subContainer {
+        grid-template-columns: 100%;
+        grid-template-rows: 70% 30%;
+        grid-template-areas: "slider"
+                             "info";
+    }
+}
+
 .modal_closed {
-    /* visibility: hidden;
-    opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
 }
 
 .modal_open {
@@ -505,10 +526,18 @@ section > h1 {
     position: absolute;
     right: 20px;
     top: 20px;
-    font-size: 40px;
+    font-size: 2.5em;
     color: rgb(92, 92, 92);
     cursor: pointer;
     margin: 0;
+}
+
+@media (max-width:414px) {
+    .modal_exit {
+        font-size: 1.5em;
+        top: 10px;
+        right: 15px;
+    }
 }
 
 .slider_container {
@@ -519,9 +548,10 @@ section > h1 {
     grid-area: slider;
 }
 
-@media (max-width:768px) {
+@media (max-width:414px) {
     .slider_container {
-        /* margin-left: 20px; */
+        grid-column-gap: 0.5em;
+        grid-template-columns: 88% 10%;
     }
 }
 
@@ -533,9 +563,10 @@ section > h1 {
     font-size: 2em;
 }
 
-.slider_thumbs_container {
-    /* width: 30%;
-    margin-left: 20px; */
+@media (max-width:414px) {
+    .slider_container > h1 {
+        font-size: 1em;
+    }
 }
 
 .active_thumb {
@@ -557,11 +588,37 @@ section > h1 {
     .modal_info_container {
         display: flex;
         justify-content: space-between;
+        padding: 0;
+        align-self: center;
+    }
+}
+
+@media (max-width:414px) {
+    .modal_info_container {
+        flex-direction: column;
     }
 }
 
 .modal_info_container h1 {
     text-align: center;
+}
+
+@media (max-width:768px) {
+    .modal_technologies {
+        width: 55%;
+    }
+}
+
+@media (max-width:768px) {
+    .modal_technologies {
+        width: 100%;
+    }
+}
+
+@media (max-width:360px) {
+    .modal_technologies {
+        display: none;
+    }
 }
 
 .modal_technologies > div {
@@ -583,6 +640,18 @@ section > h1 {
     margin-bottom: 10px;
 }
 
+@media (max-width:768px) {
+    .modal_links {
+        width: 40%;
+    }
+}
+
+@media (max-width:414px) {
+    .modal_links {
+        width: 100%;
+    }
+}
+
 .modal_links > div {
     display: flex;
     justify-content: space-evenly;
@@ -597,6 +666,16 @@ section > h1 {
     font-size: 4em;
 }
 
+@media (max-width:414px) {
+    /* .modal_links h1 {
+        display: none;
+    } */
+
+    .modal_links i {
+        font-size: 3em;
+    }
+}
+
 .modal_description {
     text-align: justify;
 
@@ -607,8 +686,13 @@ section > h1 {
 
 @media (max-width:768px) {
     .modal_description {
-        /* margin: 0;
-        padding-top: 65px; */
+        padding-top: 18%;
+    }
+}
+
+@media (max-width:414px) {
+    .modal_description {
+        display: none;
     }
 }
 
