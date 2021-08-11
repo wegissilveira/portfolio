@@ -84,9 +84,13 @@ $(function(){
             toggle_out_slider_icon_El.on('click', () => toggleSlider(index+1))
             toggle_out_slider_icon_El.appendTo(modal_body_El)
 
+            const modal_body_subContainer_El = $('<div></div>')
+            modal_body_subContainer_El.addClass('modal_body_subContainer')
+            modal_body_subContainer_El.appendTo(modal_body_El)
+
             const slider_container_El = $('<div></div>')
             slider_container_El.addClass('slider_container')
-            slider_container_El.appendTo(modal_body_El)
+            slider_container_El.appendTo(modal_body_subContainer_El)
 
             const slider_title_El = $(`<h1>${value.nome}</h1>`)
             slider_title_El.appendTo(slider_container_El)
@@ -114,7 +118,7 @@ $(function(){
 
             const modal_info_container_El = $('<div></div>')
             modal_info_container_El.addClass('modal_info_container')
-            modal_info_container_El.appendTo(modal_body_El)
+            modal_info_container_El.appendTo(modal_body_subContainer_El)
 
             const modal_technologies_container_El = $('<div></div>')
             modal_technologies_container_El.addClass('modal_technologies')
@@ -156,7 +160,7 @@ $(function(){
 
             const modal_info_description_El = $(`<p>${value.description}</p>`)
             modal_info_description_El.addClass('modal_description')
-            modal_info_description_El.appendTo(modal_info_container_El) 
+            modal_info_description_El.appendTo(modal_body_subContainer_El) 
             
         })
 
