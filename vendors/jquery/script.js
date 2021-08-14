@@ -1,5 +1,6 @@
 import projetosData from '../../data/projetosData.js'
 import aboutData from '../../data/aboutData.js'
+import contactsData from '../../data/contactsData.js'
 
 // $(function(){
     // $.getScript('../../data/projetosData.js', function() {
@@ -39,11 +40,11 @@ import aboutData from '../../data/aboutData.js'
             const project_technologies_El = $('<div></div>')
             project_technologies_El.addClass('projects_technologies')
             project_technologies_El.appendTo(card_back_subContainer_El)
-
+            
             $.each(value.tecnologias, (idx, val) => {
                 const technology_icon_El = $('<i></i>')
-                technology_icon_El.addClass(val[1])
-                technology_icon_El.css('color', val[2])
+                technology_icon_El.addClass(val[0][1])
+                technology_icon_El.css('color', val[0][2])
                 technology_icon_El.appendTo(project_technologies_El)
             })
 
@@ -60,7 +61,7 @@ import aboutData from '../../data/aboutData.js'
             open_modal_icon_El.css('margin', '0')
             open_modal_icon_El.on('click', () => toggleSlider(index + 1))
             open_modal_icon_El.appendTo(project_links_container_El)
-
+            
             $.each(value.links, (idx, val) => {
                 const project_link_El = $('<a></a>')
                 project_link_El.attr('href', val[0])
@@ -135,8 +136,8 @@ import aboutData from '../../data/aboutData.js'
 
             $.each(value.tecnologias, (idx, val) => {
                 const technology_icon_El = $('<i></i>')
-                technology_icon_El.addClass(val[1])
-                technology_icon_El.css('color', val[2])
+                technology_icon_El.addClass(val[0][1])
+                technology_icon_El.css('color', val[0][2])
                 technology_icon_El.appendTo(technologies_icons_container_El)
             })
 
@@ -184,9 +185,8 @@ import aboutData from '../../data/aboutData.js'
             if (value.skills) {
                 $.each(value.skills, (i, val) => {
                     const skillContainer_El = $('<div></div>')
-
                     const skillIcon_El = $('<i></i>')
-                    skillIcon_El.addClass(val[1])
+                    skillIcon_El.addClass(val[0][1])
                     skillIcon_El.appendTo(skillContainer_El)
 
                     skillContainer_El.appendTo('.about_skills')
@@ -199,4 +199,19 @@ import aboutData from '../../data/aboutData.js'
     //     console.log('error:')
     //     console.log(exception)
     // })
+        
+        $.each(contactsData, (index, value) => {
+            const contactLink = $('<a></a>')
+            contactLink.attr('href', value.link)
+
+            const contactIcon = $('<i></i>')
+            contactIcon.addClass(value.icon)
+            contactIcon.appendTo(contactLink)
+
+            const contactTitle = $(`<p>${value.title}</p>`)
+            contactTitle.appendTo(contactLink)
+
+            contactLink.appendTo('.contact_links_subContainer')
+        })
+
 // })

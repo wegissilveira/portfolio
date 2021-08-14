@@ -1,16 +1,24 @@
-import icons from './iconsData.js'
+import promise from './iconsData.js'
 
+let icons = {}
 
-let projetosData
+await promise
+    .then(doc => {
+        doc.forEach(icon => {
+            const key = Object.keys(icon.data())
+            const value = Object.values(icon.data())
+            return icons[key] = value
+        })
+    })
 
 // function returnData() {
-    export default projetosData = [
+    const projetosData = [
         {
             nome: 'Site 1',
-            tecnologias: [icons.js, icons.css, icons.angular, icons.node, icons.php],
+            tecnologias: [icons.js, icons.css, icons.angular, icons.nodeJs, icons.php],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
@@ -25,8 +33,8 @@ let projetosData
             nome: 'Site 2',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -41,8 +49,8 @@ let projetosData
             nome: 'Site 3',
             tecnologias: [icons.js, icons.reactJs, icons.css, icons.bootstrap],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
@@ -57,8 +65,8 @@ let projetosData
             nome: 'Site 4',
             tecnologias: [icons.js, icons.html, icons.css, icons.bootstrap],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-1/Frente.png',
             imgs: [
@@ -73,8 +81,8 @@ let projetosData
             nome: 'Site 5',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -89,8 +97,8 @@ let projetosData
             nome: 'Site 5',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -105,8 +113,8 @@ let projetosData
             nome: 'Site 5',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
             links: [
-                ['#', icons.webpage[1], icons.webpage[2]], 
-                ['#', icons.github[1], icons.github[2]]
+                ['#', icons.link[0][1], icons.link[0][2]], 
+                ['#', icons.github[0][1], icons.github[0][2]]
             ],
             cover: '../img/Site-2/Frente.png',
             imgs: [
@@ -123,4 +131,4 @@ let projetosData
     // return projetosData
 // }
 
-// export default projetosData
+export default projetosData

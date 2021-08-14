@@ -83,20 +83,9 @@
                         <input type="submit" value="Enviar"/>
                     </form>
                 </div>
-                <div class="contact_social">
-                    <div>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
-                            Linkedin
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-github"></i>
-                            Github
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-whatsapp"></i>
-                            whatsapp
-                        </a>
+                <div class="contact_links_container">
+                    <div class="contact_links_subContainer">
+                        <!--Populado com script.js-->
                     </div>
                 </div>
             </div>
@@ -112,13 +101,34 @@
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
         <script src="./node_modules//jquery/dist/jquery.min.js"></script>
 
-        <script type="module" src="/vendors/jquery/script.js"></script>
-        <script src="./js/index.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyB-TepJ0Wib8_d_2F2_LVsQJGw7t4fbFJg",
+                authDomain: "portfolio-c5da1.firebaseapp.com",
+                projectId: "portfolio-c5da1",
+                storageBucket: "portfolio-c5da1.appspot.com",
+                messagingSenderId: "751914017688",
+                appId: "1:751914017688:web:1b0ee243ccdb8cc51101ed"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
         
+        <script type="module" src="./data/iconsData.js"></script>
+        <script type="module" src="./data/contactsData.js"></script>
         <script type="module" src="./data/projetosData.js"></script>
         <script type="module" src="./data/aboutData.js"></script>
-        
+
+        <script type="module" src="/vendors/jquery/script.js"></script>
+        <script src="./js/index.js"></script>        
         
     </body>
-
 </html>
