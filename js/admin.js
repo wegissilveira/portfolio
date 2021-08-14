@@ -125,7 +125,7 @@ contactForm.addEventListener('submit', async e => {
     const platform = document.getElementById('platform').value
     const link = document.getElementById('link').value
     const iconId = document.getElementById('icon').value
-
+    console.log(iconId)
     contactsObj['title'] = platform
     contactsObj['link'] = link
     contactsObj['icon'] = db.doc('techs/'+iconId)

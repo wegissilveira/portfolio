@@ -4,7 +4,7 @@ import contactsData from '../../data/contactsData.js'
 
 // $(function(){
     // $.getScript('../../data/projetosData.js', function() {
-        
+        console.log(projetosData)
         $.each(projetosData, (index, value) => {
         // $.each(projetosData, (index, value) => {
             

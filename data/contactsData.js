@@ -1,35 +1,43 @@
-// import promise from './iconsData.js'
+import promise from './iconsData.js'
 
-// let icons = {}
-
-// await promise
-//     .then(doc => {
-//         doc.forEach(icon => {
-//             const key = Object.keys(icon.data())
-//             const value = Object.values(icon.data())
-//             return icons[key] = value
-//         })
-//     })
 
 const db = firebase.firestore()
-
-let contactsData
 const query = db.collection('contacts').get()
 
+let contactsData = []
+let iconsId = []
+
 await query.then(async docs => {
-    contactsData = []
     await docs.forEach(doc => {
-        let contactsArr = {}
-        contactsArr['title'] = doc.data().title
-        contactsArr['link'] = doc.data().link
+        let contactsObj = {}
+        contactsObj['title'] = doc.data().title
+        contactsObj['link'] = doc.data().link
+        contactsObj['id'] = doc.data().icon.path.split('/').pop()
+
+        iconsId.push(doc.data().icon.path.split('/').pop())
+        contactsData.push(contactsObj)
         
-        doc.data().icon.get().then(info => {
-            const key = Object.keys(info.data())[0]
-            contactsArr['icon'] = info.data()[key][1]
-        })
-        contactsData.push(contactsArr)
     })
 })
+
+
+await promise
+    .then(doc => {
+        doc.forEach(icon => {
+            if (iconsId.indexOf(icon.id) !== -1) {
+                const value = Object.values(icon.data())
+
+                contactsData.forEach(item => {
+                    if (value[0][0].toUpperCase() === item.title.toUpperCase()) {
+                        item['icon'] = value[0][1]
+                    }
+                })
+            }
+        })
+    })
+
+
+// console.log(iconArr)
 
 // let contactsData
 // const query = db.collection('contacts').get()
@@ -53,11 +61,10 @@ await query.then(async docs => {
 //     })
 // })
 
-await new Promise((resolve) => {
-    setTimeout(() => {
-        resolve();
-    }, 500);
-});
-
+// await new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve();
+//     }, 500);
+// });
 
 export default contactsData
