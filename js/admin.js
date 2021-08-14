@@ -2,6 +2,7 @@ const db = firebase.firestore()
 
 const techForm = document.getElementById('technologyForm')
 const contactForm = document.getElementById('contactsForm')
+const aboutForm = document.getElementById('aboutForm')
 
 const storeTech = (techName, tech) => {
     db.collection('techs').doc().set({
@@ -17,6 +18,21 @@ const storeContact = (title, link, icon) => {
     })
 }
 
+let aboutId_BD
+const updateAbout = (text, skills) => {
+    db.collection('about').doc(aboutId_BD).update({
+        text,
+        skills: skills
+    })
+}
+
+// const storeAbout = (text, skills) => {
+//     db.collection('about').doc().set({
+//         text,
+//         skills: skills
+//     })
+// }
+
 // let id = ''
 let icons = {}
 
@@ -26,12 +42,29 @@ let icons = {}
 //     })
 // }
 
-const icon = document.getElementById('icon')
+const iconSelect_El = document.getElementById('icon')
+const aboutSelect_El = document.getElementById('aboutTech')
+
 const getTechs = () => {
     return db.collection('techs').get()
 }
 
+const getAbout = () => {
+    return db.collection('about').get()
+}
+
 window.addEventListener('DOMContentLoaded', async e => {
+
+    let skills
+    let aboutText
+    const query = await getAbout()
+
+    query.forEach(item => {
+        skills = item.data().skills
+        aboutText = item.data().text
+        aboutId_BD = item.id
+    })
+    
     const querySnapshot = await getTechs()
     
     querySnapshot.forEach(doc => {
@@ -46,10 +79,28 @@ window.addEventListener('DOMContentLoaded', async e => {
         const iconOption = document.createElement('option')
         iconOption.textContent = optionText
         iconOption.setAttribute('value', item[1])
+        
+        iconSelect_El.appendChild(iconOption)
+        // aboutSelect_El.appendChild(iconOption.cloneNode(true))
 
-        icon.appendChild(iconOption)
+        const checkBoxOption = document.createElement('input')
+        const labelOption = document.createElement('label')
+        
+        document.getElementById('aboutText').textContent = aboutText
+        checkBoxOption.setAttribute('type', 'checkbox')
+        checkBoxOption.setAttribute('id', item[1])
+        checkBoxOption.setAttribute('name', 'aboutTech')
+        if (skills.indexOf(item[1]) !== -1) {
+            checkBoxOption.checked = true
+        }
+
+        labelOption.textContent = optionText
+        
+        aboutSelect_El.appendChild(checkBoxOption)
+        aboutSelect_El.appendChild(labelOption)
     })
 })
+
 
 techForm.addEventListener('submit', async e => {
     e.preventDefault()
@@ -69,16 +120,35 @@ techForm.addEventListener('submit', async e => {
 contactForm.addEventListener('submit', async e => {
     e.preventDefault()
 
-    let contactArr = {}
+    let contactsObj = {}
 
     const platform = document.getElementById('platform').value
     const link = document.getElementById('link').value
     const iconId = document.getElementById('icon').value
 
-    contactArr['title'] = platform
-    contactArr['link'] = link
-    contactArr['icon'] = db.doc('techs/'+iconId)
-    console.log(contactArr)
+    contactsObj['title'] = platform
+    contactsObj['link'] = link
+    contactsObj['icon'] = db.doc('techs/'+iconId)
 
-    await storeContact(contactArr['title'], contactArr['link'], contactArr['icon'])
+    await storeContact(contactsObj['title'], contactsObj['link'], contactsObj['icon'])
+})
+
+
+aboutForm.addEventListener('submit', async e => {
+    e.preventDefault()
+
+    let aboutObj = {}
+
+    const aboutText = document.getElementById('aboutText').value
+    const iconAbout = document.getElementsByName('aboutTech')
+
+    let techsArr = []
+    for (let i=0; i < iconAbout.length; i++) {
+        if (iconAbout[i].checked) {
+            
+            techsArr.push(iconAbout[i].id)
+        }
+    }
+
+    await updateAbout(aboutText, techsArr)
 })

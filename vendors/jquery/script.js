@@ -176,9 +176,10 @@ import contactsData from '../../data/contactsData.js'
     // })
 
     // $.getScript('../../data/aboutData.js', function() {
+        
         $.each(aboutData, (index, value) => {
-            if (value.text) {
-                const about_text_El = $(`<p>${value.text}</p>`)
+            if (value.aboutText) {
+                const about_text_El = $(`<p>${value.aboutText}</p>`)
                 about_text_El.appendTo('.about_text')
             }
 
