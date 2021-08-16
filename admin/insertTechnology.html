@@ -14,6 +14,7 @@
     </head>
 
     <body>
+        <h2 style="color: red;">CRIAR PROPRIEDADE NOS ÍCONES PARA DEFINIR SE É TECH, CONTATO OU OS DOIS</h2>
         <form id="technologyForm">
             <label>Name</label>
             <input type="text" id="techName" placeholder="name"/>
@@ -51,12 +52,30 @@
             <div id="projectTech">
                 <!-- populado com script -->
             </div>
+
             <label>Project Demo</label>
             <input type="text" name="" id="projectDemo" placeholder="Project Demo Link">
             <label>Project Github</label>
             <input type="text" name="" id="projectGit" placeholder="Project Github Link">
+            <textarea name="" id="projectDescription" cols="30" rows="10"></textarea>
+            
+            <button id="getCoverImgBtn">Get Cover Image</button>
+            <button id="getSlidersImgBtn">Get Slider Images</button>
+            <!-- <button id="uploadImg">Upload Image</button> -->
             <input type="submit" value="Insert Project">
+            <div id="imgContainer" style="width: 100px; display: flex;">
+                <img id="coverImg" style="max-width: 100%; margin-right: 5px;" />
+            </div>
         </form>
+
+        <!-- <div>
+            <div id="imgContainer" style="width: 100px; display: flex;">
+                <img id="coverImg" style="max-width: 100%;" />
+            </div>
+            
+            <button id="getCoverImgBtn">Get Cover Image</button>
+            <button id="getSlidersImgBtn">Get Slider Images</button>
+        </div> -->
 
 
 
@@ -76,6 +95,10 @@
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script> 
+
+        <!-- <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script> -->
 
         <script>
             // Your web app's Firebase configuration

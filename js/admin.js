@@ -3,10 +3,17 @@ const db = firebase.firestore()
 const techForm = document.getElementById('technologyForm')
 const contactForm = document.getElementById('contactsForm')
 const aboutForm = document.getElementById('aboutForm')
+const projectForm = document.getElementById('projectForm')
 
 const storeTech = (techName, tech) => {
     db.collection('techs').doc().set({
         [techName]: tech
+    })
+}
+
+const storeProject = (projectName, project) => {
+    db.collection('projects').doc().set({
+        [projectName]: project
     })
 }
 
@@ -44,6 +51,7 @@ let icons = {}
 
 const iconSelect_El = document.getElementById('icon')
 const aboutSelect_El = document.getElementById('aboutTech')
+const projectTech_El = document.getElementById("projectTech")
 
 const getTechs = () => {
     return db.collection('techs').get()
@@ -98,6 +106,12 @@ window.addEventListener('DOMContentLoaded', async e => {
         
         aboutSelect_El.appendChild(checkBoxOption)
         aboutSelect_El.appendChild(labelOption)
+
+        let checkBoxOptionClone = checkBoxOption.cloneNode(true)
+        checkBoxOptionClone.checked = false
+        checkBoxOptionClone.setAttribute('name', 'projectTech')
+        projectTech_El.appendChild(checkBoxOptionClone)
+        projectTech_El.appendChild(labelOption.cloneNode(true))
     })
 })
 
@@ -151,4 +165,125 @@ aboutForm.addEventListener('submit', async e => {
     }
 
     await updateAbout(aboutText, techsArr)
+})
+
+
+const getCoverImgBtn = document.getElementById("getCoverImgBtn")
+const getSlidersImgBtn = document.getElementById("getSlidersImgBtn")
+const uploadImg = document.getElementById("uploadImg")
+// const projectName = document.getElementById("projectName")
+// const projectDemo = document.getElementById("projectDemo")
+// const projectGit = document.getElementById("projectGit")
+// const projectTech = document.getElementById("projectTech")
+// const projectDescription = document.getElementById("projectDescription")
+
+
+let imgName
+let imgUrl
+let coverImg = []
+let sliderImgs = []
+let reader
+
+getCoverImgBtn.addEventListener('click', e => {
+    e.preventDefault()
+    
+    const input = document.createElement('input')
+    input.type = 'file'
+
+    input.onchange = e => {
+        coverImg = e.target.files
+        reader = new FileReader()
+        reader.onload = () => {
+            document.getElementById('coverImg').src = reader.result
+        }
+        reader.readAsDataURL(coverImg[0])
+    }
+    input.click()
+})
+
+getSlidersImgBtn.addEventListener('click', e => {
+    e.preventDefault()
+
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.setAttribute('multiple', true)
+
+    input.onchange = e => {
+        sliderImgs = e.target.files
+        const container = document.getElementById('imgContainer')
+        
+        for (let i = 0; i < sliderImgs.length; i++) {
+            reader = new FileReader()
+            reader.onload = evt => {
+                const img = document.createElement('img')
+                
+                img.src = evt.target.result
+                img.style.maxWidth = '100%'
+                img.style.marginRight = '5px'
+                container.appendChild(img)
+            }
+                
+            reader.readAsDataURL(sliderImgs[i])
+        }
+        
+    }
+    input.click()
+})
+
+projectForm.addEventListener('submit', async e => {
+    e.preventDefault()
+
+    const projectName = document.getElementById("projectName").value
+    const projectNameFormatted =projectName.replace(' ', '-').toLowerCase()
+    const projectDemo = document.getElementById("projectDemo").value
+    const projectGit = document.getElementById("projectGit").value
+    const projectDescription = document.getElementById("projectDescription").value
+
+    let coverImgRef
+    if (coverImg.length > 0) {
+        let storageRef = firebase.storage().ref()
+        let coverRef = storageRef.child(`${projectName.replace(' ', '-').toLowerCase()}/cover`)
+        let imgRef = coverRef.put(coverImg[0])
+
+        imgRef.then(snapshot => {
+            snapshot.ref.getDownloadURL()
+            .then(url => coverImgRef = url)
+        })
+    }
+    
+    let arrRef = []
+    if (sliderImgs.length > 0) {
+        for (let i = 0; i < sliderImgs.length; i++) {
+            let storageSliderRef = firebase.storage().ref()
+            let sliderRef = storageSliderRef.child(`${projectName.replace(' ', '-').toLowerCase()}/img-${i}`)
+            await sliderRef.put(sliderImgs[i])
+
+                .then(snapshot => {
+                    snapshot.ref.getDownloadURL()
+                        .then(url => arrRef.push(url))
+                })
+        }
+    }
+
+    const iconProject = document.getElementsByName('projectTech')
+
+    let techsArr = []
+    for (let i=0; i < iconProject.length; i++) {
+        if (iconProject[i].checked) {
+            techsArr.push(iconProject[i].id)
+        }
+    }
+
+    let projectObj = {
+        projectName: projectName,
+        projectTechs: techsArr,
+        projectDescription: projectDescription,
+        projectLinks: [projectDemo, projectGit],
+        coverImg: coverImgRef,
+        coverImgsSlider: arrRef,
+    }
+
+    console.log(projectObj)
+
+    await storeProject(projectNameFormatted, projectObj)
 })
