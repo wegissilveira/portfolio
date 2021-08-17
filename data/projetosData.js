@@ -79,7 +79,7 @@ await promise
         },
         {
             nome: 'Site 5',
-            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
+            tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php, icons.jQuery],
             links: [
                 ['#', icons.link[0][1], icons.link[0][2]], 
                 ['#', icons.github[0][1], icons.github[0][2]]
@@ -94,7 +94,7 @@ await promise
             ]
         },
         {
-            nome: 'Site 5',
+            nome: 'Site 6',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css],
             links: [
                 ['#', icons.link[0][1], icons.link[0][2]], 
@@ -110,7 +110,7 @@ await promise
             ]
         },
         {
-            nome: 'Site 5',
+            nome: 'Site 7',
             tecnologias: [icons.js, icons.html, icons.bootstrap, icons.css, icons.php],
             links: [
                 ['#', icons.link[0][1], icons.link[0][2]], 

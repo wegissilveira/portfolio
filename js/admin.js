@@ -5,8 +5,8 @@ const contactForm = document.getElementById('contactsForm')
 const aboutForm = document.getElementById('aboutForm')
 const projectForm = document.getElementById('projectForm')
 
-const storeTech = (techName, tech) => {
-    db.collection('techs').doc().set({
+const storeIcon = (techName, tech) => {
+    db.collection('icons').doc().set({
         [techName]: tech
     })
 }
@@ -53,8 +53,8 @@ const iconSelect_El = document.getElementById('icon')
 const aboutSelect_El = document.getElementById('aboutTech')
 const projectTech_El = document.getElementById("projectTech")
 
-const getTechs = () => {
-    return db.collection('techs').get()
+const getIcons = () => {
+    return db.collection('icons').get()
 }
 
 const getAbout = () => {
@@ -63,19 +63,19 @@ const getAbout = () => {
 
 window.addEventListener('DOMContentLoaded', async e => {
 
-    let skills
+    let aboutSkills
     let aboutText
-    const query = await getAbout()
+    const aboutQuery = await getAbout()
 
-    query.forEach(item => {
-        skills = item.data().skills
+    aboutQuery.forEach(item => {
+        aboutSkills = item.data().skills
         aboutText = item.data().text
         aboutId_BD = item.id
     })
     
-    const querySnapshot = await getTechs()
+    const iconsQuery = await getIcons()
     
-    querySnapshot.forEach(doc => {
+    iconsQuery.forEach(doc => {
         const key = Object.keys(doc.data())
         const value = Object.values(doc.data())
         value.push(doc.id)
@@ -83,35 +83,45 @@ window.addEventListener('DOMContentLoaded', async e => {
     })
     
     Object.values(icons).forEach(item => {
-        const optionText = item[0][0].charAt(0).toUpperCase() + item[0][0].slice(1)
-        const iconOption = document.createElement('option')
-        iconOption.textContent = optionText
-        iconOption.setAttribute('value', item[1])
-        
-        iconSelect_El.appendChild(iconOption)
-        // aboutSelect_El.appendChild(iconOption.cloneNode(true))
 
-        const checkBoxOption = document.createElement('input')
-        const labelOption = document.createElement('label')
-        
-        document.getElementById('aboutText').textContent = aboutText
-        checkBoxOption.setAttribute('type', 'checkbox')
-        checkBoxOption.setAttribute('id', item[1])
-        checkBoxOption.setAttribute('name', 'aboutTech')
-        if (skills.indexOf(item[1]) !== -1) {
-            checkBoxOption.checked = true
+        const optionText = item[0][0].charAt(0).toUpperCase() + item[0][0].slice(1)
+
+        /*Contact Section*/
+        if (item[0][3] === 'contact' || item[0][3] === 'both') {
+            const iconOption = document.createElement('option')
+            iconOption.textContent = optionText
+            iconOption.setAttribute('value', item[1])
+            
+            iconSelect_El.appendChild(iconOption)
         }
 
-        labelOption.textContent = optionText
+        if (item[0][3] === 'tech' || item[0][3] === 'both') {
+            /*About Section*/
+            const checkBoxOptionAbout = document.createElement('input')
+            const labelOptionAbout = document.createElement('label')
         
-        aboutSelect_El.appendChild(checkBoxOption)
-        aboutSelect_El.appendChild(labelOption)
+            checkBoxOptionAbout.setAttribute('type', 'checkbox')
+            checkBoxOptionAbout.setAttribute('id', item[1])
+            checkBoxOptionAbout.setAttribute('name', 'aboutTech')
+            labelOptionAbout.textContent = optionText
 
-        let checkBoxOptionClone = checkBoxOption.cloneNode(true)
-        checkBoxOptionClone.checked = false
-        checkBoxOptionClone.setAttribute('name', 'projectTech')
-        projectTech_El.appendChild(checkBoxOptionClone)
-        projectTech_El.appendChild(labelOption.cloneNode(true))
+            document.getElementById('aboutText').textContent = aboutText
+
+            if (aboutSkills.indexOf(item[1]) !== -1) {
+                checkBoxOptionAbout.checked = true
+            }
+
+            aboutSelect_El.appendChild(checkBoxOptionAbout)
+            aboutSelect_El.appendChild(labelOptionAbout)
+
+            /*Project Section*/
+            const checkBoxOptionProject = checkBoxOptionAbout.cloneNode(true)
+            checkBoxOptionProject.checked = false
+            checkBoxOptionProject.setAttribute('name', 'projectTech')
+
+            projectTech_El.appendChild(checkBoxOptionProject)
+            projectTech_El.appendChild(labelOptionAbout.cloneNode(true))
+        }
     })
 })
 
@@ -124,11 +134,12 @@ techForm.addEventListener('submit', async e => {
     const techName = document.getElementById('techName').value
     const techIcon = document.getElementById('techIcon').value
     const techIconColor = document.getElementById('techIconColor').value
+    const iconType = document.getElementById('iconType').value
 
-    techArr.push(techName, techIcon, techIconColor)
+    techArr.push(techName, techIcon, techIconColor, iconType)
 
     // await updateTechs(id, techName, techArr)
-    await storeTech(techName, techArr)
+    await storeIcon(techName, techArr)
 })
 
 contactForm.addEventListener('submit', async e => {
@@ -170,13 +181,7 @@ aboutForm.addEventListener('submit', async e => {
 
 const getCoverImgBtn = document.getElementById("getCoverImgBtn")
 const getSlidersImgBtn = document.getElementById("getSlidersImgBtn")
-const uploadImg = document.getElementById("uploadImg")
-// const projectName = document.getElementById("projectName")
-// const projectDemo = document.getElementById("projectDemo")
-// const projectGit = document.getElementById("projectGit")
-// const projectTech = document.getElementById("projectTech")
-// const projectDescription = document.getElementById("projectDescription")
-
+// const uploadImg = document.getElementById("uploadImg")
 
 let imgName
 let imgUrl

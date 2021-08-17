@@ -25,7 +25,6 @@ await promise
         })
     })
 
-
 let aboutData = [
     {aboutText},
     {skills}

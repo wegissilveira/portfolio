@@ -340,12 +340,23 @@ section > h1 {
     margin: 0;
 }
 
-.jquery_black {
-    /* background-image: url('../vendors/icons/jquery/jquery_black.png'); */
-    background-image: url('../vendors/icons/jquery/jquery-big.png');
+.jQuery_black {
+    background-image: url('../vendors/icons/jquery/jquery_black.png');
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
+    height: 100%;
+    width: 50%;
+    justify-self: center;
+}
+
+.jQuery_grey {
+    background-image: url('../vendors/icons/jquery/jquery_grey.png');
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80%;
+    width: 40px;
 }
 
 .projects_cardBack_subContainer > p {
@@ -399,15 +410,6 @@ section > h1 {
     grid-template-columns: repeat(3, 33%);
     grid-template-rows: 30px;
     grid-auto-rows: 50px;
-}
-
-.jquery_grey {
-    background-image: url('../vendors/icons/jquery/jquery_grey.png');
-    display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 80%;
-    width: 40px;
 }
 
 .about_skills img  {

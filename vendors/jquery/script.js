@@ -4,7 +4,6 @@ import contactsData from '../../data/contactsData.js'
 
 // $(function(){
     // $.getScript('../../data/projetosData.js', function() {
-        console.log(projetosData)
         $.each(projetosData, (index, value) => {
         // $.each(projetosData, (index, value) => {
             
@@ -43,7 +42,7 @@ import contactsData from '../../data/contactsData.js'
             
             $.each(value.tecnologias, (idx, val) => {
                 const technology_icon_El = $('<i></i>')
-                technology_icon_El.addClass(val[0][1])
+                technology_icon_El.addClass(val[0][0] === 'jQuery' ? 'jQuery_black' : val[0][1])
                 technology_icon_El.css('color', val[0][2])
                 technology_icon_El.appendTo(project_technologies_El)
             })
@@ -187,13 +186,12 @@ import contactsData from '../../data/contactsData.js'
                 $.each(value.skills, (i, val) => {
                     const skillContainer_El = $('<div></div>')
                     const skillIcon_El = $('<i></i>')
-                    skillIcon_El.addClass(val[0][1])
+                    skillIcon_El.addClass(val[0][0] === 'jQuery' ? 'jQuery_grey' : val[0][1])
                     skillIcon_El.appendTo(skillContainer_El)
 
                     skillContainer_El.appendTo('.about_skills')
                 })
             }
-            
         })
         
     // }).fail(function(jqxhr, settings, exceptions) {
