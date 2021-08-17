@@ -12,7 +12,7 @@ await query.then(async docs => {
         let contactsObj = {}
         contactsObj['title'] = doc.data().title
         contactsObj['link'] = doc.data().link
-        contactsObj['id'] = doc.data().icon.path.split('/').pop()
+        // contactsObj['id'] = doc.data().icon.path.split('/').pop()
 
         iconsId.push(doc.data().icon.path.split('/').pop())
         contactsData.push(contactsObj)
@@ -20,13 +20,11 @@ await query.then(async docs => {
     })
 })
 
-
 await promise
     .then(doc => {
         doc.forEach(icon => {
             if (iconsId.indexOf(icon.id) !== -1) {
                 const value = Object.values(icon.data())
-
                 contactsData.forEach(item => {
                     if (value[0][0].toUpperCase() === item.title.toUpperCase()) {
                         item['icon'] = value[0][1]

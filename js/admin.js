@@ -11,11 +11,18 @@ const storeIcon = (techName, tech) => {
     })
 }
 
-const storeProject = (projectName, project) => {
-    db.collection('projects').doc().set({
+let projectsId_BD
+const updateProject = (projectName, project) => {
+    db.collection('projects').doc(projectsId_BD).update({
         [projectName]: project
     })
 }
+
+// const storeProject = (projectName, project) => {
+//     db.collection('projects-1').doc().set({
+//         [projectName]: project
+//     })
+// }
 
 const storeContact = (title, link, icon) => {
     db.collection('contacts').doc().set({
@@ -33,12 +40,12 @@ const updateAbout = (text, skills) => {
     })
 }
 
-// const storeAbout = (text, skills) => {
-//     db.collection('about').doc().set({
-//         text,
-//         skills: skills
-//     })
-// }
+const storeAbout = (text, skills) => {
+    db.collection('about').doc().set({
+        text,
+        skills: skills
+    })
+}
 
 // let id = ''
 let icons = {}
@@ -61,16 +68,20 @@ const getAbout = () => {
     return db.collection('about').get()
 }
 
+const getProjects = () => {
+    return db.collection('projects').get()
+}
+
 window.addEventListener('DOMContentLoaded', async e => {
 
     let aboutSkills
     let aboutText
     const aboutQuery = await getAbout()
 
-    aboutQuery.forEach(item => {
-        aboutSkills = item.data().skills
-        aboutText = item.data().text
-        aboutId_BD = item.id
+    aboutQuery.forEach(doc => {
+        aboutSkills = doc.data().skills
+        aboutText = doc.data().text
+        aboutId_BD = doc.id
     })
     
     const iconsQuery = await getIcons()
@@ -80,7 +91,13 @@ window.addEventListener('DOMContentLoaded', async e => {
         const value = Object.values(doc.data())
         value.push(doc.id)
         icons[key] = value
-    })
+    })   
+    
+    const projectsQuery = await getProjects()
+    
+    projectsQuery.forEach(doc => {
+        projectsId_BD = doc.id
+    })   
     
     Object.values(icons).forEach(item => {
 
@@ -118,6 +135,7 @@ window.addEventListener('DOMContentLoaded', async e => {
             const checkBoxOptionProject = checkBoxOptionAbout.cloneNode(true)
             checkBoxOptionProject.checked = false
             checkBoxOptionProject.setAttribute('name', 'projectTech')
+            checkBoxOptionProject.setAttribute('value', item[0][0])
 
             projectTech_El.appendChild(checkBoxOptionProject)
             projectTech_El.appendChild(labelOptionAbout.cloneNode(true))
@@ -175,6 +193,7 @@ aboutForm.addEventListener('submit', async e => {
         }
     }
 
+    // await storeAbout(aboutText, techsArr)
     await updateAbout(aboutText, techsArr)
 })
 
@@ -239,7 +258,7 @@ projectForm.addEventListener('submit', async e => {
     e.preventDefault()
 
     const projectName = document.getElementById("projectName").value
-    const projectNameFormatted =projectName.replace(' ', '-').toLowerCase()
+    const projectNameFormatted = projectName.replace(' ', '-').toLowerCase()
     const projectDemo = document.getElementById("projectDemo").value
     const projectGit = document.getElementById("projectGit").value
     const projectDescription = document.getElementById("projectDescription").value
@@ -256,39 +275,50 @@ projectForm.addEventListener('submit', async e => {
         })
     }
     
-    let arrRef = []
+    let sliderImgsRef = []
     if (sliderImgs.length > 0) {
         for (let i = 0; i < sliderImgs.length; i++) {
             let storageSliderRef = firebase.storage().ref()
             let sliderRef = storageSliderRef.child(`${projectName.replace(' ', '-').toLowerCase()}/img-${i}`)
+            
             await sliderRef.put(sliderImgs[i])
-
                 .then(snapshot => {
                     snapshot.ref.getDownloadURL()
-                        .then(url => arrRef.push(url))
+                        .then(url => sliderImgsRef.push(url))
                 })
         }
     }
+
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 500);
+    });
 
     const iconProject = document.getElementsByName('projectTech')
 
     let techsArr = []
     for (let i=0; i < iconProject.length; i++) {
         if (iconProject[i].checked) {
-            techsArr.push(iconProject[i].id)
+            // techsArr.push(iconProject[i].id)
+            techsArr.push(iconProject[i].value)
         }
     }
+
+    let projectLinksArr = [
+        [projectDemo, 'fas fa-link', '#F98B00'], 
+        [projectGit, 'fab fa-github', '#000']
+    ]
 
     let projectObj = {
         projectName: projectName,
         projectTechs: techsArr,
         projectDescription: projectDescription,
-        projectLinks: [projectDemo, projectGit],
+        projectLinks: JSON.stringify(projectLinksArr),
         coverImg: coverImgRef,
-        coverImgsSlider: arrRef,
+        sliderImgs: sliderImgsRef
     }
 
-    console.log(projectObj)
-
-    await storeProject(projectNameFormatted, projectObj)
+    // await storeProject(projectNameFormatted, projectObj)
+    await updateProject(projectNameFormatted, projectObj)
 })

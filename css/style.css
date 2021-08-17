@@ -232,9 +232,14 @@ section > h1 {
 
 .projects_container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(48%, 19rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(48%, 19rem), 1fr));
     gap: 1.5rem; 
 }
+
+/* .projects_container > div {
+    max-width: 350px;
+    max-height: 450px;
+} */
 
 .projects_card_container {
     color: #fff;
@@ -345,8 +350,9 @@ section > h1 {
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 100%;
     width: 50%;
+    height: 50px;
+    margin-top: 10%;
     justify-self: center;
 }
 
