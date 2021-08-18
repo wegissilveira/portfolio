@@ -43,6 +43,11 @@ function compare( a, b ) {
 
 projectsData.sort(compare)
 
+export default projectsData
+
+
+/**/
+ 
 // function returnData() {
     // const projetosData = [
     //     {
@@ -164,4 +169,3 @@ projectsData.sort(compare)
 // }
 
 // export default projetosData
-export default projectsData
