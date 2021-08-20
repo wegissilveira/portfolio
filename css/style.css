@@ -15,7 +15,7 @@
 @media (max-width:414px) {
     :root {
         --sections-direction: column;
-        --sections_children-1: min(100%, fit-content);
+        --sections_children-1: min(100%, fit-content; );
         --sections_children-2: 100%;
         --children_1-MB: 20px;
     }
@@ -228,12 +228,21 @@ section > h1 {
 /* ************************************************************ */
 /* *PROJETOS* */
 /* ************************************************************ */
+.card_block {
+    width: 300px;
+    height: 300px;
+}
 
+.card_block img {
+    max-width: 300px;
+}
 
 .projects_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(48%, 19rem), 1fr));
     gap: 1.5rem; 
+
+    display: none;
 }
 
 /* .projects_container > div {
@@ -761,6 +770,7 @@ section > h1 {
     background-color: #e6e6e6;
     width: var(--sections_children-2);
     height: fit-content;
+    height: -moz-max-content;
 }
 
 .contact_links_subContainer {

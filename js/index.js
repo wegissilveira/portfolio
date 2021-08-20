@@ -69,7 +69,6 @@ const toggleSlider = id => {
 }
 
 const changeMainImage = (imgSource, index, el) => {
-    
     const mainImg_El = document.getElementById(`main_img-${index}`)
     mainImg_El.src = imgSource
 

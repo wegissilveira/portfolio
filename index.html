@@ -47,8 +47,9 @@
             </div>
         </nav>
 
-        <section id="projetos" class="container">
+        <section id="projects" class="container">
             <h1>Projetos</h1>
+            <h1 id="load">Loading...</h1>
             <div class="projects_container">
                 <!--Populado com script.js-->
             </div>
@@ -94,9 +95,7 @@
         <footer>
             <p>Desenvolvido por Wegis Silveira</p>
         </footer>
-
-
-        
+       
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- <script src="./node_modules//jquery/dist/jquery.min.js"></script> -->
@@ -115,12 +114,12 @@
             firebase.initializeApp(firebaseConfig);
         </script>
         
+        <script type="module" src="./data/projetosData.js"></script>
         <script type="module" src="./data/iconsData.js"></script>
         <script type="module" src="./data/contactsData.js"></script>
-        <script type="module" src="./data/projetosData.js"></script>
         <script type="module" src="./data/aboutData.js"></script>
 
-        <script type="module" src="/vendors/jquery/script.js"></script>
+        <script type="module" src="./vendors/jquery/script.js"></script>
         <script src="./js/index.js"></script>        
         
     </body>

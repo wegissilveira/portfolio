@@ -1,15 +1,17 @@
-import projetosData from '../../data/projetosData.js'
+import projectsData from '../../data/projetosData.js'
 import aboutData from '../../data/aboutData.js'
 import contactsData from '../../data/contactsData.js'
 
-// $(function(){
+$(function(){
     // $.getScript('../../data/projetosData.js', function() {
-        console.log(projetosData)
-        $.each(projetosData, (index, value) => {
-        // $.each(projetosData, (index, value) => {
-            
+
+        const projects_container = $('.projects_container')
+        let counterImg = 0
+
+        $.each(projectsData, (index, value) => {
             const card_block_El = $('<div></div>')
-            card_block_El.appendTo('.projects_container')
+
+            card_block_El.appendTo(projects_container)
 
             /* CARD */
             const card_container_El = $('<div></div>')
@@ -23,10 +25,21 @@ import contactsData from '../../data/contactsData.js'
             const card_title_El = $(`<div><p>${value.projectName}</p></div>`)
             card_title_El.appendTo(card_container_El)
 
-            const card_img_div_El = $('<div></div>')
-            const card_img_El = $('<img>')
-            card_img_El.attr('src', value.coverImg)
-            card_img_El.appendTo(card_img_div_El)
+            let card_img_El = new Image
+            card_img_El.addEventListener("load",() => {
+                counterImg++
+                if (counterImg >= projectsData.length) {
+                    $('#load').remove()
+                    projects_container.css('display', 'grid')
+                } 
+            })
+
+            card_img_El.src = value.coverImg;
+            const card_img_div_El = 
+                    $(`<div class="card_img_div_El">
+                        <img class="card_img_El" src="${card_img_El.src}"/>
+                    </div>`);
+            
             card_img_div_El.appendTo(card_subContainer_El)
 
             const card_back_container_El = $('<div></div>')
@@ -72,7 +85,6 @@ import contactsData from '../../data/contactsData.js'
                 link_icon_El.css('color', val[2])
                 link_icon_El.appendTo(project_link_El)
             })
-            
 
             /* MODAL */
             const modal_container_El = $('<div></div>')
@@ -165,10 +177,7 @@ import contactsData from '../../data/contactsData.js'
             const modal_info_description_El = $(`<p>${value.projectDescription}</p>`)
             modal_info_description_El.addClass('modal_description')
             modal_info_description_El.appendTo(modal_body_subContainer_El) 
-            
         })
-
-        
 
     // }).fail(function(jqxhr, settings, exceptions) {
     //     console.log('error:')
@@ -214,4 +223,4 @@ import contactsData from '../../data/contactsData.js'
             contactLink.appendTo('.contact_links_subContainer')
         })
 
-// })
+})
