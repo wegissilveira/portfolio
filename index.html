@@ -22,9 +22,9 @@
                     class="navigation"
                     onclick="highlight_navigation()"
                 >
-                    <a href="#projetos">Projetos</a>
+                    <a href="#projects">Projetos</a>
                     <a href="#about">Sobre Mim</a>
-                    <a href="#contato">Contato</a>
+                    <a href="#contact">Contato</a>
                 </div>
                 <div class="menu-hamburger" onclick="toggleMobileNavigation()">
                     <p></p>
@@ -39,9 +39,9 @@
                     <div 
                         id="nav_mobile"
                     >
-                        <a href="#projetos">Projetos</a>
+                        <a href="#projects">Projetos</a>
                         <a href="#about">Sobre Mim</a>
-                        <a href="#contato">Contato</a>
+                        <a href="#contact">Contato</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
 
         <section id="projects" class="container">
             <h1>Projetos</h1>
-            <h1 id="load">Loading...</h1>
+            <div class="preloader"></div>
             <div class="projects_container">
                 <!--Populado com script.js-->
             </div>
@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        <section id="contato" class="container">
+        <section id="contact" class="container">
             <h1>Contato</h1>
             <div class="contact_container">
                 <div class="contact_form">
@@ -98,7 +98,6 @@
        
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- <script src="./node_modules//jquery/dist/jquery.min.js"></script> -->
         <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
 
@@ -115,7 +114,6 @@
         </script>
         
         <script type="module" src="./data/projetosData.js"></script>
-        <script type="module" src="./data/iconsData.js"></script>
         <script type="module" src="./data/contactsData.js"></script>
         <script type="module" src="./data/aboutData.js"></script>
 

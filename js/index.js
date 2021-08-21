@@ -1,7 +1,3 @@
-// import icons from '../data/iconsData.js'
-
-// console.log(icons)
-
 const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : 'nav_mobile')
 const nav_links_arr = Array.from(nav_links_El.children)
 
