@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     </head>
 
-    <body>
+    <body class="body">
         <nav>
             <div class="nav_container container">
                 <h1>PORTFÓLIO</h1>
@@ -72,15 +72,15 @@
             <h1>Contato</h1>
             <div class="contact_container">
                 <div class="contact_form">
-                    <form>
+                    <form id="contact-form" method="POST" action="./contact-form-handler.php">
                         <label>Nome*</label>
-                        <input />
+                        <input name="name" />
                         <label>E-mail*</label>
-                        <input />
+                        <input name="email" />
                         <label>Telefone</label>
-                        <input />
+                        <input name="phone" />
                         <label>Mensagem*</label>
-                        <textarea></textarea>
+                        <textarea name="message"></textarea>
                         <input type="submit" value="Enviar"/>
                     </form>
                 </div>
