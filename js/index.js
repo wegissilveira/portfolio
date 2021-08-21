@@ -2,9 +2,7 @@ const nav_links_El = document.getElementById(window.innerWidth > 414 ? 'nav' : '
 const nav_links_arr = Array.from(nav_links_El.children)
 
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        highlight_navigation()
-    }, 500)
+    highlight_navigation()
 })
 
 const sections = document.querySelectorAll('section')
@@ -19,7 +17,6 @@ const highlight_navigation = () => {
     sections.forEach(section => {
         const sectionTop = section.offsetTop
         const sectionHeight = section.clientHeight
-
         if (pageYOffset >= sectionTop - sectionHeight / 3) {
             current = section.getAttribute('id')
         }
@@ -27,6 +24,10 @@ const highlight_navigation = () => {
 
     nav_links_arr.forEach(item => {
         item.classList.remove('active')
+        if (current === '') {
+            current = 'projects'
+        }
+
         if (item.hash.match(current)) {
             item.classList.add('active')
         }
@@ -51,16 +52,20 @@ const toggleMobileNavigation = () => {
     }
 }
 
-const toggleSlider = id => {
-    const modal_El = document.getElementById('products_modal-'+id)
-    const body = document.getElementsByTagName('BODY')[0]
+const toggleSlider = (e, id) => {
+    e.stopPropagation()
 
-    if (modal_El.classList.contains('modal_closed')) {
-        modal_El.className = 'projects_modal_container modal_open'
-        body.style.overflow = 'hidden'
-    } else {
-        modal_El.className = 'projects_modal_container modal_closed'
-        body.style.overflow = 'visible'
+    if (e.target.className.match(`toggle_modal`)) {
+        const modal_El = document.getElementById('products_modal-'+id)
+        const body = document.getElementsByTagName('BODY')[0]
+
+        if (modal_El.classList.contains('modal_closed')) {
+            modal_El.className = 'projects_modal_container modal_open toggle_modal'
+            body.style.overflow = 'hidden'
+        } else {
+            modal_El.className = 'projects_modal_container modal_closed toggle_modal'
+            body.style.overflow = 'visible'
+        }
     }
 }
 

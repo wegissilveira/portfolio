@@ -68,10 +68,10 @@ $(function(){
         project_links_container_El.appendTo(card_back_subContainer_El)
 
         const open_modal_icon_El = $('<i></i>')
-        open_modal_icon_El.addClass('fas fa-eye')
+        open_modal_icon_El.addClass('fas fa-eye toggle_modal')
         open_modal_icon_El.css('color', '#019AFF')
         open_modal_icon_El.css('margin', '0')
-        open_modal_icon_El.on('click', () => toggleSlider(index + 1))
+        open_modal_icon_El.on('click', e => toggleSlider(e, index + 1))
         open_modal_icon_El.appendTo(project_links_container_El)
         
         $.each(value.projectLinks, (idx, val) => {
@@ -87,8 +87,9 @@ $(function(){
 
         /* MODAL */
         const modal_container_El = $('<div></div>')
-        modal_container_El.addClass('projects_modal_container modal_closed')
+        modal_container_El.addClass('projects_modal_container modal_closed toggle_modal')
         modal_container_El.attr('id', `products_modal-${index+1}`)
+        modal_container_El.on('click', e => toggleSlider(e, index + 1))
         modal_container_El.appendTo(card_block_El)
 
         const modal_body_El = $('<div></div>')
@@ -96,8 +97,8 @@ $(function(){
         modal_body_El.appendTo(modal_container_El)
 
         const toggle_out_slider_icon_El = $('<i></i>')
-        toggle_out_slider_icon_El.addClass('fas fa-sign-out-alt modal_exit')
-        toggle_out_slider_icon_El.on('click', () => toggleSlider(index+1))
+        toggle_out_slider_icon_El.addClass('fas fa-sign-out-alt modal_exit toggle_modal')
+        toggle_out_slider_icon_El.on('click', e => toggleSlider(e, index+1))
         toggle_out_slider_icon_El.appendTo(modal_body_El)
 
         const modal_body_subContainer_El = $('<div></div>')
