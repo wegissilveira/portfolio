@@ -1,0 +1,45 @@
+
+.message-email {
+    background-color: #fff;
+}
+
+.message-container {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.message-container > i {
+    font-size: 5em;
+    color: #3DC480;
+}
+
+.message-container .fa-times-circle {
+    color: red;
+}
+
+.message-container  .message-success-title {
+    color: #3DC480;
+}
+
+.message-container .message-fail-title {
+    color: red;
+}
+
+.message-container > a {
+    color: #000;
+}
+
+.message-container > a:hover {
+    text-decoration: underline;
+}
+
+.message-container > a strong {
+    color: #d35058;
+}

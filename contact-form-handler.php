@@ -1,34 +1,10 @@
 <?php
     $name = $_POST['name'];
     $email= $_POST['email'];
-    $phone= $_POST['phone'];
-    $message= $_POST['message'];
+    $subject= $_POST['subject'];
+    $text= $_POST['message'];
 
-    $to = "wegis.h.silveira@gmail.com";
-
-    $subject = "Mail From portfolio";
-
-    // $txt ="Name = ". $name . "\r\n  Email = " . $email . "\r\n Message =" . $message;
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-    $message = '<html><body>';
-    $message .= '<h1>Hello, World!</h1>';
-    $message .= '</body></html>';
-
-    $headers = "From: portfoliocontact@wegis.com.br";
-
-    if($email!=NULL){
-        mail($to,$subject,$message,$headers);
-    }
-
-    header("Location: index.html");
-?>
-
-<!--USAR ESSE CÓDIGO COMO REFERêNCIA DA MENSAGEM-->
-<?php
     $to = 'wegis.h.silveira@gmail.com';
-    $subject = 'Marriage Proposal';
     $from = 'portfoliocontact@wegis.com.br';
     
     // To send HTML mail, the Content-type header must be set
@@ -42,18 +18,22 @@
     
     // Compose a simple HTML email message
     $message = '<html><body>';
-    $message .= '<h1 style="color:#f40;">Hi Jane!</h1>';
-    $message .= '<p style="color:#080;font-size:18px;">Will you marry me?</p>';
+    $message .= '<h2 style="color:red;">'.$subject.'.</h2>';
+    $message .= '<p style="color:#000;font-size:14px;">'.$text.'</p>' . "\r\n";
+    $message .= '<p style="color:#000;font-size:14px;">Nome: '.$name.'</p>' . "\r\n";
+    $message .= '<p style="color:#000;font-size:14px;">E-mail: '.$email.'</p>';
     $message .= '</body></html>';
     
     // Sending email
     if($email!=NULL){
         if(mail($to, $subject, $message, $headers)){
-            echo 'Your mail has been sent successfully.';
+            // echo 'Your mail has been sent successfully.';
+            header("Location: message-success.html");
         } else{
-            echo 'Unable to send email. Please try again.';
+            // echo 'Unable to send email. Please try again.';
+            header("Location: message-fail.html");
         }
     }
 
-    header("Location: index.html");
+    // header("Location: index.html");
 ?>

@@ -7,10 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portfólio</title>
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./css/style.css">
         
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+        <link rel="icon" href="./vendors/icons/favicon.svg">
     </head>
 
     <body class="body">
@@ -74,13 +76,13 @@
                 <div class="contact_form">
                     <form id="contact-form" method="POST" action="./contact-form-handler.php">
                         <label>Nome*</label>
-                        <input name="name" />
+                        <input name="name" required/>
                         <label>E-mail*</label>
-                        <input name="email" />
-                        <label>Telefone</label>
-                        <input name="phone" />
+                        <input type="email" name="email" required/>
+                        <label>Assunto*</label>
+                        <input name="subject" required/>
                         <label>Mensagem*</label>
-                        <textarea name="message"></textarea>
+                        <textarea name="message" required></textarea>
                         <input type="submit" value="Enviar"/>
                     </form>
                 </div>
@@ -93,7 +95,7 @@
         </section>
 
         <footer>
-            <p>Desenvolvido por Wegis Silveira</p>
+            <p>Desenvolvido por <a href="https://www.wegis.com.br">Wegis Silveira</a></p>
         </footer>
        
         
