@@ -35,6 +35,7 @@ body {
     margin: 0;
     background-color: #272727;
     font-family: 'Nunito';
+    cursor: url("/vendors/icons/cursor.svg"), auto;
 }
 
 body::-webkit-scrollbar-track {
@@ -56,6 +57,15 @@ body::-webkit-scrollbar-thumb {
 
 a {
     text-decoration: none;
+    cursor: url('/vendors/icons/cursor-pointer.svg'), pointer;
+}
+
+label {
+    cursor: url('/vendors/icons/cursor.svg'), pointer;
+}
+
+input, textarea {
+    cursor: url('/vendors/icons/cursor-text.svg'), auto;
 }
 
 .container {
@@ -121,7 +131,7 @@ nav {
 
 .navigation > a:hover {
     color: #ff9fe5;
-    cursor: pointer;
+    cursor: url('/vendors/icons/cursor-pointer.svg'), pointer;
 }
 
 .nav_container .active {
@@ -336,6 +346,7 @@ section > h1 {
 .projects_card_container > div:nth-of-type(2) > p {
     margin: 0;
     font-size: 20px;
+    text-align: center;
 }
 
 .projects_cardBack_container {
@@ -427,7 +438,7 @@ section > h1 {
 }
 
 .projects_cardBack_subContainer > div:nth-of-type(2) > i {
-    cursor: pointer;
+    cursor: url('/vendors/icons/cursor-pointer.svg'), pointer;
 }
 
 /* ************************************************************ */
@@ -590,7 +601,7 @@ section > h1 {
     top: 20px;
     font-size: 2.5em;
     color: rgb(92, 92, 92);
-    cursor: pointer;
+    cursor: url('/vendors/icons/cursor-pointer.svg'), pointer;
     margin: 0;
 }
 
@@ -827,7 +838,7 @@ section > h1 {
     margin-bottom: 16px;
     margin-top: 16px;
     height: 30px;
-    cursor: pointer;
+    cursor: url('/vendors/icons/cursor-pointer.svg'), pointer;
 }
 
 .contact_links_container {
