@@ -196,7 +196,7 @@ $(function(){
             })
         }
     })
-    
+    console.log(contactsData)
     $.each(contactsData, (index, value) => {
         const contactLink = $('<a target="_blank" rel="noopener noreferrer"></a>')
         contactLink.attr('href', value.link)
