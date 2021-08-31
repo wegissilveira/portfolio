@@ -408,7 +408,56 @@ section > h1 {
 
 .fa-eye {
     margin: 0;
+    box-shadow: 0 0 0 rgba(1, 153, 255, 0.705);
+    border-radius: 100% 0px;
+    
+    transform: rotate(40deg);
+    -webkit-transform: rotate(40deg );
+    -moz-transform: rotate(40deg );
+    -ms-transform: rotate(40deg );
+    -o-transform: rotate(40deg );
+
+    animation: pulse 1.3s infinite;
+    -webkit-animation: pulse 1.3s infinite;
 }
+
+.fa-eye::before {
+    transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+} 
+
+.fa-eye:hover {
+    animation: none;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(1, 153, 255, 0.705);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(1, 153, 255, 0.705);
+      box-shadow: 0 0 0 0 rgba(1, 153, 255, 0.705);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
 
 .jQuery_black {
     background-image: url('../vendors/icons/jquery/jquery_black.png');
