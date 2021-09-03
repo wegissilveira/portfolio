@@ -13,12 +13,12 @@
     
     // Create email headers
     $headers .= 'From: '.$from."\r\n".
-        'Reply-To: '.$from."\r\n" .
+        'Reply-To: '.$email."\r\n" .
         'X-Mailer: PHP/' . phpversion();
     
     // Compose a simple HTML email message
     $message = '<html><body>';
-    $message .= '<h2 style="color:red;">'.$subject.'.</h2>';
+    $message .= '<h2 style="color:red;">Assunto: '.$subject.'</h2>';
     $message .= '<p style="color:#000;font-size:14px;">'.$text.'</p>' . "\r\n";
     $message .= '<p style="color:#000;font-size:14px;">Nome: '.$name.'</p>' . "\r\n";
     $message .= '<p style="color:#000;font-size:14px;">E-mail: '.$email.'</p>';
