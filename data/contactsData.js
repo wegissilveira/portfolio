@@ -15,24 +15,19 @@ contactsQuery.then(async docs => {
         iconsId.push(doc.data().icon.path.split('/').pop())
         contactsData.push(contactsObj)
     })
-})
 
-await new Promise((resolve) => {
-    setTimeout(() => {
-        resolve();
-    }, 1000);
-})
-
-iconsQuery.then(async doc => {
-    await doc.forEach(icon => {
-        if (iconsId.indexOf(icon.id) !== -1) {
-            const value = Object.values(icon.data())
-            contactsData.forEach(item => {
-                if (value[0][0].toUpperCase() === item.title.toUpperCase()) {
-                    item['icon'] = value[0][1]
-                }
-            })
-        }
+}).then(() => {
+    iconsQuery.then(async doc => {
+        doc.forEach(icon => {
+            if (iconsId.indexOf(icon.id) !== -1) {
+                const value = Object.values(icon.data())
+                contactsData.forEach(item => {
+                    if (value[0][0].toUpperCase() === item.title.toUpperCase()) {
+                        item['icon'] = value[0][1]
+                    }
+                })
+            }
+        })
     })
 })
 

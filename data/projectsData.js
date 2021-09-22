@@ -13,19 +13,20 @@ await IconsQuery.then(doc => {
         const value = Object.values(icon.data())
         return icons[key] = value
     })
-})
 
-await projectsQuery.then(async docs => {
-    await docs.forEach(doc => {
-        const keys = Object.keys(doc.data())
-        keys.forEach(key => {
-            let obj = {...doc.data()[key]}
-            obj['projectTechs'].forEach((tech, index) => {
-                obj['projectTechs'][index] = icons[tech]
+}).then(() => {
+    projectsQuery.then(async docs => {
+        docs.forEach(doc => {
+            const keys = Object.keys(doc.data())
+            keys.forEach(key => {
+                let obj = {...doc.data()[key]}
+                obj['projectTechs'].forEach((tech, index) => {
+                    obj['projectTechs'][index] = icons[tech]
+                })
+                obj['projectLinks'] = JSON.parse(obj['projectLinks'])
+                projectsData.push(obj)
+                
             })
-            obj['projectLinks'] = JSON.parse(obj['projectLinks'])
-            projectsData.push(obj)
-            
         })
     })
 })

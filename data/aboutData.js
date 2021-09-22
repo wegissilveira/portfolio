@@ -12,18 +12,18 @@ await aboutQuery.then(async docs => {
         icons = doc.data().skills
         aboutText = doc.data().text
     })
-})
 
-await IconsQuery.then(doc => {
-    doc.forEach(icon => {
-        if (icons.indexOf(icon.id) !== -1) {
-            const key = Object.keys(icon.data())
-            const value = Object.values(icon.data())
-            skills[key] = value
-        }
+}).then(() => {
+    IconsQuery.then(doc => {
+        doc.forEach(icon => {
+            if (icons.indexOf(icon.id) !== -1) {
+                const key = Object.keys(icon.data())
+                const value = Object.values(icon.data())
+                skills[key] = value
+            }
+        })
     })
-})
-
+}).catch((e) => console.log(e))
 
 let aboutData = [
     {aboutText},

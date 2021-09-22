@@ -54,7 +54,6 @@ $(function(){
         project_technologies_El.appendTo(card_back_subContainer_El)
         
         $.each(value.projectTechs, (idx, val) => {
-            console.log(val)
             const technology_icon_El = $('<i></i>')
             technology_icon_El.addClass(val[0][1])
             technology_icon_El.addClass('colored')
