@@ -1,0 +1,18 @@
+**ABOUT:
+Olá, me chamo Wegis, sou desenvolvedor frontend com foco em React. O que faço é transformar ideias em grandes experiências. Sempre lembrando que do outro lado da tela há um indivíduo buscando conforto e acessibilidade a cada movimento que realiza com o mouse ou com os dedos. Sou apaixonado por tecnologia e estou sempre em busca de novos conhecimentos e do aprimoramento daquilo que já faz parte do meu repertório. Visite os meus projetos e após isso entre em contato através de qualquer um dos meios abaixo para batermos um papo. Até logo!
+
+**FOOD LANCHES:
+Food Lanches é uma belíssima aplicação de uma página, que possuí uma burgueria como tema. A aplicação possuí uma área de reviews e uma área onde o menu é exposto, ambas criadas em formato de slider e muito bem distribuídas na página. Além disso a aplicação é completamente responsiva.
+
+**MADE FOR YOU:
+Made For You é um belo e-commerce focado em móveis domésticos. A aplicação foi construída com React JS e possuí todas as características frontend de um ecommerce: Página de produtos, carrinho de compra, página de favoritos, filtro dinâmico, dentre outros detalhes que deixam a página bela e funcional.
+
+**MOBLY:
+Mobly Clone, como o próprio nome já diz, se trata de um clone do site das Lojas Mobly, uma conhecida loja de móveis e com páginas sempre muito arrojadas. Esse belo projeto foi construído sem auxílio de nenhum framework e faz uso dos mais diversos recursos do CSS e do Javascript. O site possui todas as páginas e características frontend que um ecommerce necessita para ser chamado de completo.
+
+**PORTFÓLIO:
+Tal projeto se trata desta página. Com visual minimalista e harmonioso esse projeto tem como intuito exibir trabalhos, links e possibilitar o contato dos interessados.
+
+**REGISTRO DE PRODUTOS:
+Essa aplicação tem como pressuposto inserir, listar, atualizar e remover itens de uma lista, em outras palavras, se trata de um CRUD, e como todo CRUD executa as funções listadas acima. Mas não se engane com a sua simplicidade, este CRUD é uma ferramenta completa, além de executar as funções básicas também possibilita o aumento de itens, a ordenação por todas as colunas de maneira independente, a busca por itens através de um input e, dentre outras funcionalidades, é completamente responsiva. A regra de negócios completa pode ser encontrada no repositório do Github, listado no link acima deste texto.
+

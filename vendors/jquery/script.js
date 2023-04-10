@@ -140,7 +140,7 @@ $(function(){
         modal_technologies_container_El.addClass('modal_technologies')
         modal_technologies_container_El.appendTo(modal_info_container_El)
 
-        const modal_technologies_title_El = $('<h1>Tecnologias utilizadas</h1>')
+        const modal_technologies_title_El = $('<h1>Stack</h1>')
         modal_technologies_title_El.appendTo(modal_technologies_container_El)
 
         const technologies_icons_container_El = $('<div></div>')

@@ -26,9 +26,9 @@
                     class="navigation"
                     onclick="highlight_navigation()"
                 >
-                    <a href="#projects">Projetos</a>
-                    <a href="#about">Sobre Mim</a>
-                    <a href="#contact">Contato</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About me</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div class="menu-hamburger" onclick="toggleMobileNavigation()">
                     <p></p>
@@ -37,22 +37,22 @@
                 </div>
                 <div class="navigation_mobile">
                     <div class="navigation_mobile__header">
-                        <h1>PORTFÓLIO</h1>
+                        <h1>PORTFOLIO</h1>
                         <i class="fas fa-times" onclick="toggleMobileNavigation()"></i>
                     </div>
                     <div 
                         id="nav_mobile"
                     >
-                        <a href="#projects">Projetos</a>
-                        <a href="#about">Sobre Mim</a>
-                        <a href="#contact">Contato</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#about">About me</a>
+                        <a href="#contact">Contact</a>
                     </div>
                 </div>
             </div>
         </nav>
 
         <section id="projects" class="container">
-            <h1>Projetos</h1>
+            <h1>Projects</h1>
             <div class="preloader"></div>
             <div class="projects_container">
                 <!--Populado com script.js-->
@@ -60,32 +60,36 @@
         </section>
 
         <section id="about" class="container">
-            <h1>Sobre Mim</h1>
+            <h1>About me</h1>
             <div class="about_container">
                 <div class="about_text">
                     <!--Populado com script.js-->
                 </div>
                 <div class="about_skills">
-                    <div>Habilidades</div>
+                    <div>Skills</div>
                     <!--Populado com script.js-->
                 </div>
             </div>
         </section>
 
         <section id="contact" class="container">
-            <h1>Contato</h1>
+            <h1>Contact</h1>
             <div class="contact_container">
                 <div class="contact_form">
                     <form id="contact-form" method="POST" action="./contact-form-handler.php">
-                        <label>Nome*</label>
+                        <label>Name*</label>
                         <input name="name" required/>
-                        <label>E-mail*</label>
+                        <label>Email*</label>
                         <input type="email" name="email" required/>
-                        <label>Assunto*</label>
+                        <label>Subject*</label>
                         <input name="subject" required/>
-                        <label>Mensagem*</label>
+                        <label>Message*</label>
                         <textarea name="message" required></textarea>
-                        <input type="submit" value="Enviar"/>
+                        <!-- <div class="bot-verification-wrapper">
+                            <input type="checkbox" name="bot-verification" class="bot-verification" required/>
+                            <label>I'm not a robot</label>
+                        </div> -->
+                        <input type="submit" value="Send"/>
                     </form>
                 </div>
                 <div class="contact_links_container">
@@ -97,7 +101,7 @@
         </section>
 
         <footer>
-            <p>Desenvolvido por Wegis Silveira</p>
+            <p>Developed by Wegis Silveira</p>
         </footer>
        
         
